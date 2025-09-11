@@ -33,3 +33,20 @@ MIP 的基本步骤：
 比较意义：分析这些词汇在特定上下文中的意义，判断其是否偏离字面意义。
 
 判断隐喻性：如果词汇在上下文中的意义明显不同于其字面意义，则认为该词汇具有隐喻性。
+
+### idea3: Text-to-Speech with Emotion Control
+
+Most TTS systems today focus on generating *neutral, natural* voices.  
+But real communication relies heavily on **emotion** — excitement in a story, calm in instructions, empathy in support.  
+
+This project aims to build a **deep learning–based TTS system** that not only converts text into human-like speech, but also lets the user **control the emotion and intensity** of the voice (e.g., happy, sad, angry, neutral, with adjustable strength).
+
+---
+
+## Key Components
+- **Neural acoustic model** (e.g., FastSpeech2, VITS)  
+  → Generates expressive spectrograms from text.  
+- **Neural vocoder** (e.g., HiFi-GAN)  
+  → Converts spectrograms into realistic audio.  
+- **Emotion embeddings / style tokens**  
+  → Condition the model with both **discrete categories** and **continuous sliders** (prosody, intensity).  

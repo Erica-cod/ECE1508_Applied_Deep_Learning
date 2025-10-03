@@ -60,7 +60,7 @@
 \numberwithin{table}{section} 
 
 
-\newcommand{\ProjectTopic}{Topic}
+\newcommand{\ProjectTopic}{Question Answering vs. LLMs}
 \newcommand{\ProjectCat}{Open-ended}
 \setlength\parindent{0pt}
 
@@ -109,7 +109,7 @@
 		\horrule{.5pt}\\
 	}
 	\subject{}
-	\title{ }
+\title{Project Proposal: Question Answering --- Task-Specific Models vs. LLMs}
 	\subtitle{\normalfont \textit{Course Project}\vspace*{-2.5cm}}
 	\date{}
 	\maketitle
@@ -119,30 +119,43 @@
 	}
 	
 \begin{table}[H]
-	\begin{tabular}{l l}
-		\hline
-		\textbf{Topic} & Topic \\
-		\hline
-	\end{tabular}
+\begin{tabular}{l l}
+\hline
+\textbf{Topic} & Question Answering --- Task-Specific Models vs. LLMs \\
+\textbf{Dataset} & Recipe-MPR multi-perspective recipe QA \\
+\hline
+\end{tabular}
 \end{table}
 
+\paragraph*{Background}
+Large language models (LLMs) perform strongly on open-domain question answering, yet their general-purpose nature can miss task-specific nuances. In specialized domains, fine-tuning a focused model often yields gains in efficiency, interpretability, and reliability. The Recipe-MPR dataset, containing 500 user queries with five answer variations apiece, offers a benchmark for multi-perspective responses in the recipe domain and enables a grounded comparison between specialized and general-purpose approaches.
+
 \paragraph*{Objective} 
-Here goes the objective.
+Fine-tune a task-specific transformer model on Recipe-MPR to surpass the 65\% baseline accuracy while benchmarking performance, robustness, and efficiency against prompted LLM outputs.
 
 \paragraph*{Motivation}
-Here goes the motivation.
+By contrasting a domain-adapted model with a general-purpose LLM, we aim to surface the trade-offs between specialization and broad capability. Understanding when a dedicated model outperforms or complements a large foundation model can inform deployment decisions in domains demanding efficiency, transparency, or domain fidelity.
 
 \paragraph*{Requirements} The final submission should address the following requirements while the details can be freely decided by the group members.
 \begin{enumerate}
-	\item Item 1
-	\item Item 2
+\item \textbf{Model Training:} Fine-tune a pretrained transformer (e.g., BERT, RoBERTa, DistilBERT) on Recipe-MPR to capture recipe-domain subtleties.
+\item \textbf{Evaluation:} Report accuracy and F1-score on a held-out test split to measure task-specific model performance.
+\item \textbf{Comparison:} Prompt a state-of-the-art LLM with identical queries, score its responses using the same metrics, and compare with the fine-tuned model.
+\item \textbf{Analysis:} Provide qualitative and quantitative analyses to highlight scenarios where the specialized model excels or complements the LLM baseline.
 \end{enumerate}
 
 \paragraph*{Milestones}
 The following milestones are to be accomplished through semester.
 \begin{enumerate}
-	\item Milestone 1
+\item \textbf{Weeks 1--2:} Conduct literature review on recipe QA, finalize dataset handling, and prepare the development environment.
+\item \textbf{Weeks 3--4:} Fine-tune the selected transformer model variants on Recipe-MPR.
+\item \textbf{Week 5:} Evaluate the task-specific model and benchmark against LLM-generated answers.
+\item \textbf{Week 6:} Perform comparative analysis and draft key findings.
+\item \textbf{Final Week:} Complete the written report and prepare the project submission materials.
 \end{enumerate}
+
+\paragraph*{Expected Outcomes}
+We anticipate the fine-tuned model achieving accuracy comparable to or exceeding that of prompted LLMs within the recipe domain. The project should demonstrate the efficiency, domain adaptability, and interpretability gains of specialized models while clarifying the circumstances in which reliance on general-purpose LLMs remains advantageous.
 
 
 	

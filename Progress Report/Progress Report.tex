@@ -1,0 +1,220 @@
+\documentclass{article}
+% if you need to pass options to natbib, use, e.g.:
+%     \PassOptionsToPackage{numbers, compress}{natbib}
+% before loading neurips_2023
+\usepackage[final]{neurips}
+% to avoid loading the natbib package, add option nonatbib:
+%    \usepackage[nonatbib]{neurips}
+
+
+\usepackage[utf8]{inputenc} % allow utf-8 input
+\usepackage[T1]{fontenc}    % use 8-bit T1 fonts
+\usepackage{hyperref}       % hyperlinks
+\usepackage{url}            % simple URL typesetting
+\usepackage{booktabs}       % professional-quality tables
+\usepackage{amsfonts}       % blackboard math symbols
+\usepackage{nicefrac}       % compact symbols for 1/2, etc.
+\usepackage{microtype}      % microtypography
+\usepackage{xcolor}         % colors
+
+
+\title{Question Answering --- Task-Specific Models vs. LLMs}
+
+
+% The \author macro works with any number of authors. There are two commands
+% used to separate the names and addresses of multiple authors: \And and \AND.
+%
+% Using \And between authors leaves it to LaTeX to determine where to break the
+% lines. Using \AND forces a line break at that point. So, if LaTeX puts 3 of 4
+% authors names on the first line, and the last on the second line, try using
+% \AND instead of \And before the third author name.
+
+
+\author{%
+  Zongyan Yao\\
+  Department of Electrical and Computer Engineering\\
+  University of Toronto\\
+  \texttt{zongyan.yao@mail.utoronto.ca}
+  \And
+  Zhengyang Li\\
+  Department of Electrical and Computer Engineering\\
+  University of Toronto\\
+  \texttt{zhengyang.li@mail.utoronto.ca}
+  \And
+  Qiwen Lin\\
+  Department of Electrical and Computer Engineering\\
+  University of Toronto\\
+  \texttt{qw.lin@mail.utoronto.ca}
+}
+
+\begin{document}
+
+
+\maketitle
+
+\begin{abstract}
+Large Language Models (LLMs) have shown strong performance on open-domain question answering, but they often lack the domain-specific precision required for specialized tasks. This project investigates whether fine-tuning smaller pretrained transformer models can outperform general-purpose LLMs on a narrow recipe-focused benchmark. Using the Recipe-MPR dataset of 500 multi-perspective cooking questions, we fine-tuned several encoder-based models (BERT, DistilBERT, RoBERTa) as well as a mid-sized decoder model (Qwen2.5--7B with LoRA). Our goal is to exceed the 65\% accuracy threshold and to analyze the trade-offs between accuracy, efficiency, and model capacity. 
+Initial results show that all fine-tuned encoder models exceed the target, with BERT-large achieving 91.4\% accuracy and DistilBERT providing strong performance at lower computational cost. The LoRA-tuned Qwen2.5--7B model achieves 100\% accuracy, demonstrating the potential of parameter-efficient fine-tuning on modern architectures. These findings highlight the benefits of domain adaptation and provide a basis for a deeper comparison between specialized and general-purpose models in the final report.
+\end{abstract}
+
+
+\section{Introduction}
+
+Large Language Models (LLMs) such as GPT and BERT have demonstrated impressive performance on 
+open-domain question answering tasks. However, their general-purpose design means that they may overlook 
+domain-specific nuances, especially in specialized areas such as culinary instructions or recipe-based reasoning. Fine-tuning smaller and mid-sized transformer models provides a practical method to improve interpretability, efficiency, and task performance.
+
+The Recipe-MPR dataset consists of 500 queries, each paired with five answer variations. 
+This dataset is designed for multi-perspective question answering within the recipe domain and represents a challenging, domain-specific benchmark. The objective of this project is to fine-tune several pretrained transformer models on this dataset, surpass the accuracy baseline, and compare their performance against a general-purpose LLM prompted directly with the same queries.
+
+\section{Preliminaries and Problem Formulation}
+
+\subsection{Problem Definition}
+
+Given a recipe-related query and five candidate response variations, the task is formulated as a 
+\textbf{five-class text classification problem}. Each model must predict the correct label 
+corresponding to the appropriate answer variation.
+
+Formally, the model receives an input query $q$ and outputs a class label 
+$y \in \{1,2,3,4,5\}$.
+
+\subsection{Objective}
+
+The primary goals of the project include:
+
+\begin{itemize}
+    \item Fine-tune multiple pretrained transformers (BERT, DistilBERT, RoBERTa, Qwen2.5-7B).
+    \item Achieve at least \textbf{65\% accuracy} and target performance above \textbf{75\%}.
+    \item Evaluate models using accuracy and macro F1-score.
+    \item Compare fine-tuned models with a state-of-the-art LLM prompted directly.
+    \item Analyze specialization vs.\ generalization trade-offs.
+\end{itemize}
+
+\subsection{Relevant Background Concepts}
+
+\paragraph{Transformer Architecture}
+All models used are transformer-based and rely on self-attention to capture contextual relationships. 
+Key components include multi-head attention, positional embeddings, feed-forward layers, and layer normalization.
+
+\paragraph{Fine-Tuning}
+Fine-tuning adapts pretrained weights to a task-specific dataset by updating all or part of the model parameters. 
+Compared with knowledge distillation, fine-tuning is simpler and more feasible for this project.
+
+\paragraph{Evaluation Metrics}
+Accuracy serves as the primary evaluation metric, with macro F1-score used to assess class-balanced performance.
+
+	
+\section{Solution via Deep Learning}
+\subsection{Dataset}
+
+The Recipe-MPR dataset includes 500 queries, each paired with five human-written answer variations and a label. 
+We apply a 80/10/10 split for training, validation, and testing respectively. 
+Preprocessing includes lowercasing, tokenization using model-specific tokenizers, and padding or truncation 
+to a fixed sequence length.
+
+\subsection{Models Used}
+
+We fine-tuned several transformer families:
+
+\begin{itemize}
+    \item BERT-base (standard and aggressive fine-tuning)
+    \item BERT-large
+    \item DistilBERT
+    \item RoBERTa-base (standard and aggressive variants)
+    \item Qwen2.5-7B with LoRA fine-tuning
+\end{itemize}
+
+Each model outputs logits over five classes.
+
+\subsection{Training Procedure (need more details?)}
+We fine-tuned each model on the Recipe-MPR training split using appropriate hyperparameters such as learning rate, batch size, number of epochs, and gradient accumulation steps. All models were evaluated on the full 500-item test set. The Qwen2.5--7B model was fine-tuned using LoRA to reduce memory requirements during training.
+
+\subsection{Testing and Early Results}
+
+\subsubsection{Qwen2.5-7B (LoRA Fine-Tuned)}
+
+The Qwen2.5--7B model demonstrates exceptional specialization on the Recipe-MPR task. After applying LoRA fine-tuning, the model achieved a perfect score with no mistakes across all 500 test examples. Table~\ref{tab:qwen_bert_compare} compares the fine-tuned Qwen model with the base Qwen model and the top-performing BERT variants. Despite Qwen’s much larger parameter count, LoRA fine-tuning remains computationally tractable and yields perfect task performance.
+
+\begin{table}[h]
+\centering
+\caption{Performance Comparison: Qwen vs. BERT Models}
+\label{tab:qwen_bert_compare}
+\begin{tabular}{lccccc}
+\toprule
+\textbf{Model} & \textbf{Parameters} & \textbf{Accuracy} & \textbf{Training Time} & \textbf{VRAM} & \textbf{Architecture} \\
+\midrule
+Fine-tuned Qwen & 7B & \textbf{100.00\%} & $\sim$15 min & 20 GB & Decoder-only \\
+Base Qwen       & 7B & 79.20\% & 0 min & 20 GB & Decoder-only \\
+BERT-large      & 340M & 91.4\% & $\sim$93 sec & 16 GB & Encoder-only \\
+DistilBERT      & 66M & 82.4\% & $\sim$35 sec & 6 GB & Encoder-only \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsubsection{BERT-Family Model Results}
+
+All BERT-family models meeting the 65\% threshold are summarized in Table~\ref{tab:bert-results}.
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{lcc}
+\toprule
+\textbf{Model} & \textbf{Accuracy} & \textbf{Above Goal?} \\
+\midrule
+BERT-large & \textbf{91.4\%} & Yes \\
+DistilBERT & 82.4\% & Yes \\
+BERT-base (aggressive) & 67.6\% & Yes \\
+BERT-base (standard) & 65.6\% & Yes \\
+RoBERTa-base (aggressive) & 65.8\% & Yes \\
+\midrule
+RoBERTa-base (standard) & 49.8\% & No \\
+DistilBERT (over-trained) & 36.8\% & No \\
+\bottomrule
+\end{tabular}
+\caption{Performance of BERT-family models on the Recipe-MPR dataset.}
+\label{tab:bert-results}
+\end{table}
+
+\subsection{Progress Summary}
+The following tasks have been completed:
+\begin{itemize}
+    \item Dataset preprocessing and splitting
+    \item Implementation of all fine-tuning pipelines
+    \item Full training of BERT-family models
+    \item LoRA fine-tuning of Qwen2.5-7B
+    \item Full testing and evaluation
+    \item Cross-model comparison
+    \item Initial performance analysis
+\end{itemize}
+
+The project is on schedule, with all core components completed.
+	
+
+\section*{References}
+Include all references here. It’s important to have your references cited.
+\medskip
+{
+\small
+
+
+[1] Alexander, J.A.\ \& Mozer, M.C.\ (1995) Template-based algorithms for
+connectionist rule extraction. In G.\ Tesauro, D.S.\ Touretzky and T.K.\ Leen
+(eds.), {\it Advances in Neural Information Processing Systems 7},
+pp.\ 609--616. Cambridge, MA: MIT Press.
+
+
+[2] Bower, J.M.\ \& Beeman, D.\ (1995) {\it The Book of GENESIS: Exploring
+  Realistic Neural Models with the GEneral NEural SImulation System.}  New York:
+TELOS/Springer--Verlag.
+
+
+[3] Hasselmo, M.E., Schnell, E.\ \& Barkai, E.\ (1995) Dynamics of learning and
+recall at excitatory recurrent synapses and cholinergic modulation in rat
+hippocampal region CA3. {\it Journal of Neuroscience} {\bf 15}(7):5249-5262.
+}
+
+\section*{Appendix}
+Any descriptions about supplementary materials go here.
+
+
+\end{document}

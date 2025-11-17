@@ -127,13 +127,13 @@ We fine-tuned several transformer families:
 Each model outputs logits over five classes.
 
 \subsection{Training Procedure (need more details?)}
-We fine-tuned each model on the Recipe-MPR training split using appropriate hyperparameters such as learning rate, batch size, number of epochs, and gradient accumulation steps. All models were evaluated on the full 500-item test set. The Qwen2.5--7B model was fine-tuned using LoRA to reduce memory requirements during training.
+We fine-tuned each model on the Recipe-MPR training split using appropriate hyperparameters such as learning rate, batch size, number of epochs, and gradient accumulation steps. All models were evaluated on the 50-item test set. Qwen2.5--7B, Llama3.2-3B, Llama3.2-1B models were fine-tuned using LoRA to reduce memory requirements during training. We also compared the performance of models before and after training to see the improvement of fine-tuning. Finally, we tried to make a contrast with our llama models vs. GPT3-Embedding, which shows our exploration of a new technique, and the difference between fine-tuning a model under a specific dataset and a general Large Language Model.
 
 \subsection{Testing and Early Results}
 
 \subsubsection{Qwen2.5-7B (LoRA Fine-Tuned)}
 
-The Qwen2.5--7B model demonstrates exceptional specialization on the Recipe-MPR task. After applying LoRA fine-tuning, the model achieved a perfect score with no mistakes across all 500 test examples. Table~\ref{tab:qwen_bert_compare} compares the fine-tuned Qwen model with the base Qwen model and the top-performing BERT variants. Despite Qwen’s much larger parameter count, LoRA fine-tuning remains computationally tractable and yields perfect task performance.
+The Qwen2.5--7B model demonstrates exceptional specialization on the Recipe-MPR task. After applying LoRA fine-tuning and training on a 32GB GPU, the model achieved a perfect score with no mistakes across 50 test examples. Table~\ref{tab:qwen_bert_compare} compares the fine-tuned Qwen model with the base Qwen model and the top-performing BERT variants. Despite Qwen’s much larger parameter count, LoRA fine-tuning remains computationally tractable and yields perfect task performance.
 
 \begin{table}[h]
 \centering
@@ -153,7 +153,7 @@ DistilBERT      & 66M & 82.4\% & $\sim$35 sec & 6 GB & Encoder-only \\
 
 \subsubsection{BERT-Family Model Results}
 
-All BERT-family models meeting the 65\% threshold are summarized in Table~\ref{tab:bert-results}.
+Training on a 32GB GPU, all BERT-family models meeting the 65\% threshold are summarized in Table~\ref{tab:bert-results}.
 
 \begin{table}[h!]
 \centering
@@ -175,6 +175,34 @@ DistilBERT (over-trained) & 36.8\% & No \\
 \label{tab:bert-results}
 \end{table}
 
+
+\subsubsection{Llama-Family Model Results Vs. GPT3 Embedding}
+
+We fine-tuned Llama-3.2-3B with LoRA to do recipe recommendation. LoRA lets us train only a tiny part of the model . We trained 5 epochs on 300 samples with 4-bit quantization on an 8GB GPU.
+
+Results are clear. The 3B LoRA model got 84.00\% in \~14 min. The 1B LoRA model got 78.00\% in about 7 min. Both beat the 65\% goal. The 3B zero-shot model reached 73.00\% (meets goal), while 1B zero-shot was 58.00\%. The GPT-3 Embedding baseline was 54.55\%. Fine-tuning gave +11 points over 3B zero-shot, and LLM reasoning beat the embedding method by +18.45 points, for a total +29.45 points over the baseline.
+
+All evaluated models with their accuracy and whether they meet the 65\% threshold are summarized in Table~\ref{tab:llama_combined}.
+\begin{table}[h]
+\centering
+\caption{Performance on the Recipe-MPR test set.}
+\label{tab:llama_combined}
+\begin{tabular}{lccccc}
+\toprule
+\textbf{Model} & \textbf{Parameters} & \textbf{Accuracy} & \textbf{Training Time} & \textbf{Above Goal?} \\
+\midrule
+Llama-3.2-3B  & 3.2B & \textbf{84.00\%} & 14 min & Yes \\
+Base Llama-3.2-3B     & 3.2B & 73.00\% & 0 min  & Yes \\
+Llama-1B      & 1B   & 78.00\% & $\sim$7 min & Yes \\
+\midrule
+Base Llama-1B                    & 1B   & 58.00\% & 0 min  & No \\
+GPT-3 Embedding  & N/A & 54.55\% & N/A    & No \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+
+
 \subsection{Progress Summary}
 The following tasks have been completed:
 \begin{itemize}
@@ -182,6 +210,8 @@ The following tasks have been completed:
     \item Implementation of all fine-tuning pipelines
     \item Full training of BERT-family models
     \item LoRA fine-tuning of Qwen2.5-7B
+    \item LoRA fine-tuning of llama3.2-3B, llama3.2-1B
+    \item Compare llama to GPT3 embedding
     \item Full testing and evaluation
     \item Cross-model comparison
     \item Initial performance analysis

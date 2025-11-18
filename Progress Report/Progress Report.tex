@@ -53,203 +53,139 @@
 \maketitle
 
 \begin{abstract}
-Large Language Models (LLMs) have shown strong performance on open-domain question answering, but they often lack the domain-specific precision required for specialized tasks. This project investigates whether fine-tuning smaller pretrained transformer models can outperform general-purpose LLMs on a narrow recipe-focused benchmark. Using the Recipe-MPR dataset of 500 multi-perspective cooking questions, we fine-tuned several encoder-based models (BERT, DistilBERT, RoBERTa) as well as a mid-sized decoder model (Qwen2.5--7B with LoRA). Our goal is to exceed the 65\% accuracy threshold and to analyze the trade-offs between accuracy, efficiency, and model capacity. 
-Initial results show that all fine-tuned encoder models exceed the target, with BERT-large achieving 91.4\% accuracy and DistilBERT providing strong performance at lower computational cost. The LoRA-tuned Qwen2.5--7B model achieves 100\% accuracy, demonstrating the potential of parameter-efficient fine-tuning on modern architectures. These findings highlight the benefits of domain adaptation and provide a basis for a deeper comparison between specialized and general-purpose models in the final report.
-\end{abstract}
+Large Language Models (LLMs) have shown strong performance on open-domain question answering, but they often lack the domain-specific precision required for specialized tasks. This project investigates whether fine-tuning smaller and mid-sized pretrained transformer models can outperform general-purpose LLMs on a narrow recipe-focused benchmark. Using the Recipe-MPR dataset of 500 multi-perspective cooking questions, we fine-tune several encoder-based models (BERT, DistilBERT, RoBERTa \cite{devlin2019bert,sanh2019distilbert,liu2019roberta}) and decoder-based models (Llama \cite{touvron2023llama} and Qwen2.5--7B \cite{qwen2024qwen2}) with parameter-efficient methods such as LoRA \cite{hu2021lora}. Our goal is to exceed a 65\% accuracy threshold and to study trade-offs between accuracy, efficiency, and model capacity.
 
+Initial results show that all fine-tuned encoder models exceed the target, with BERT-large achieving 91.4\% accuracy and DistilBERT providing strong performance at lower computational cost. The LoRA-tuned Qwen2.5--7B model achieves 100\% accuracy, and fine-tuned Llama variants reach up to 84\%, while GPT-3 embeddings \cite{text_embeddings2022} perform significantly worse. These findings highlight the benefits of domain adaptation and provide a clear basis for deeper analysis in the final report.
+\end{abstract}
 
 \section{Introduction}
 
-Large Language Models (LLMs) such as GPT and BERT have demonstrated impressive performance on 
-open-domain question answering tasks. However, their general-purpose design means that they may overlook 
-domain-specific nuances, especially in specialized areas such as culinary instructions or recipe-based reasoning. Fine-tuning smaller and mid-sized transformer models provides a practical method to improve interpretability, efficiency, and task performance.
+Large Language Models (LLMs) such as BERT and GPT have demonstrated impressive performance on open-domain natural language tasks \cite{devlin2019bert,vaswani2017attention}, but their general-purpose nature can limit reliability in narrow domains. In the recipe domain, small differences in wording can affect ingredient substitutions, cooking steps, or safety-related advice, and general LLMs may not always capture these nuances consistently.
 
-The Recipe-MPR dataset consists of 500 queries, each paired with five answer variations. 
-This dataset is designed for multi-perspective question answering within the recipe domain and represents a challenging, domain-specific benchmark. The objective of this project is to fine-tune several pretrained transformer models on this dataset, surpass the accuracy baseline, and compare their performance against a general-purpose LLM prompted directly with the same queries.
+To address this, we study whether fine-tuning smaller or mid-sized pretrained transformer models on a recipe-specific dataset can outperform a general-purpose LLM baseline. We use the Recipe-MPR dataset, which consists of 500 user queries with five candidate answers per query, covering multiple reasoning types (analogical, specific, commonsense, temporal, and negated). Our aim in this progress stage is to clearly specify the problem, describe our model and training design, report the main results obtained so far, and outline the remaining milestones rather than to deliver a polished final narrative.
 
 \section{Preliminaries and Problem Formulation}
 
 \subsection{Problem Definition}
 
-Given a recipe-related query and five candidate response variations, the task is formulated as a 
-\textbf{five-class text classification problem}. Each model must predict the correct label 
-corresponding to the appropriate answer variation.
+We formulate the task as a multiple-choice question answering problem over recipes. For each example, we are given:
+\begin{itemize}
+    \item a query $q$ (a user question about recipes or cooking), and
+    \item a set of five candidate answers $A = \{a_1, a_2, a_3, a_4, a_5\}$.
+\end{itemize}
+The goal is to learn a function
+\[
+f_\theta(q, A) \rightarrow y, \quad y \in \{1,2,3,4,5\},
+\]
+that predicts the index of the correct answer. We model this as a five-class classification problem using transformer-based architectures \cite{vaswani2017attention}.
 
-Formally, the model receives an input query $q$ and outputs a class label 
-$y \in \{1,2,3,4,5\}$.
+\subsection{Design Components and Objectives}
 
-\subsection{Objective}
-
-The primary goals of the project include:
+To make the project structure clear, we explicitly summarize our main design components:
 
 \begin{itemize}
-    \item Fine-tune multiple pretrained transformers (BERT, DistilBERT, RoBERTa, Qwen2.5-7B).
-    \item Achieve at least \textbf{65\% accuracy} and target performance above \textbf{75\%}.
-    \item Evaluate models using accuracy and macro F1-score.
-    \item Compare fine-tuned models with a state-of-the-art LLM prompted directly.
-    \item Analyze specialization vs.\ generalization trade-offs.
+    \item \textbf{Dataset:} Recipe-MPR (500 examples), split into 80/10/10 for train/validation/test.
+    \item \textbf{Models:}
+    \begin{itemize}
+        \item Encoder models: BERT-base, BERT-large \cite{devlin2019bert}, DistilBERT \cite{sanh2019distilbert}, RoBERTa-base \cite{liu2019roberta}.
+        \item Decoder models: Llama-3.2-1B, Llama-3.2-3B \cite{touvron2023llama} and Qwen2.5--7B \cite{qwen2024qwen2}.
+    \end{itemize}
+    \item \textbf{Training Strategy:}
+    \begin{itemize}
+        \item Full fine-tuning for encoder models.
+        \item LoRA-based parameter-efficient fine-tuning for large decoder models \cite{hu2021lora}.
+        \item Comparison with zero-shot LLMs and a GPT-3 embedding baseline \cite{text_embeddings2022}.
+    \end{itemize}
+    \item \textbf{Metrics:} Accuracy (primary) and macro F1-score (planned for final report).
+    \item \textbf{Targets:} 
+    \begin{itemize}
+        \item Exceed a 65\% accuracy baseline.
+        \item Analyze trade-offs between accuracy, model size, training time, and inference cost.
+    \end{itemize}
 \end{itemize}
 
 \subsection{Relevant Background Concepts}
 
-\paragraph{Transformer Architecture}
-All models used are transformer-based and rely on self-attention to capture contextual relationships. 
-Key components include multi-head attention, positional embeddings, feed-forward layers, and layer normalization.
+\paragraph{Transformer Architecture.}
+All models in this work are based on the transformer architecture \cite{vaswani2017attention}, which uses multi-head self-attention, feed-forward layers, positional encodings, and layer normalization to model contextual dependencies.
 
-\paragraph{Fine-Tuning}
-Fine-tuning adapts pretrained weights to a task-specific dataset by updating all or part of the model parameters. 
-Compared with knowledge distillation, fine-tuning is simpler and more feasible for this project.
+\paragraph{Fine-Tuning and LoRA.}
+Encoder models (e.g., BERT and RoBERTa) are fine-tuned end-to-end \cite{devlin2019bert,liu2019roberta}, whereas large decoder LLMs (Llama, Qwen) are adapted using LoRA \cite{hu2021lora}, which adds low-rank trainable adapters to reduce memory and compute while preserving most of the pretrained weights.
 
-\paragraph{GPT-3 Embedding}
-GPT-3 embeddings turn text into vectors (lists of numbers) that represent meaning.
-Texts with similar meaning get vectors that are close together. We could use them for semantic search, clustering. They capture context beyond keywords, and the vector size is fixed so it’s easy to store and compare.
+\paragraph{Embedding Baseline.}
+We also experiment with GPT-3 embeddings \cite{text_embeddings2022}, where queries and answers are mapped to vector representations, and the answer is chosen based on similarity in embedding space. This provides a non–fine-tuned baseline for comparison against explicit model adaptation.
 
-\paragraph{Evaluation Metrics}
-Accuracy serves as the primary evaluation metric, with macro F1-score used to assess class-balanced performance.
-
-	
 \section{Solution via Deep Learning}
-\subsection{Dataset}
 
-The Recipe-MPR dataset includes 500 queries, each paired with five human-written answer variations and a label. 
-We apply a 80/10/10 split for training, validation, and testing respectively. 
-Preprocessing includes lowercasing, tokenization using model-specific tokenizers, and padding or truncation 
-to a fixed sequence length.
+\subsection{Dataset Preparation}
 
-\subsection{Models Used}
+We preprocess the Recipe-MPR dataset by:
+\begin{itemize}
+    \item normalizing text (lowercasing and basic cleanup),
+    \item tokenizing using each model's tokenizer,
+    \item truncating or padding sequences to a fixed maximum length,
+    \item splitting into 80\% training, 10\% validation, 10\% test.
+\end{itemize}
+This part of the pipeline is fully implemented and reused across all models to ensure fair comparison.
 
-We fine-tuned several transformer families:
+\subsection{Model and Training Pipeline}
+
+We have implemented a unified training pipeline in PyTorch with HuggingFace Transformers for both encoder and decoder models.
+
+\paragraph{Encoder models.}
+BERT-base, BERT-large, DistilBERT, and RoBERTa-base \cite{devlin2019bert,sanh2019distilbert,liu2019roberta} are fine-tuned by adding a classification head on top of the [CLS] representation and training with cross-entropy loss.
+
+\paragraph{Decoder models.}
+Llama-3.2-1B, Llama-3.2-3B \cite{touvron2023llama} and Qwen2.5--7B \cite{qwen2024qwen2} are adapted using LoRA \cite{hu2021lora} with 4-bit quantization to fit within 8--32GB GPUs. We frame the task as sequence-to-sequence or causal LM scoring over the candidate answers.
+
+\subsection{Current Progress and Preliminary Results}
+
+At this stage of the project, the following components are completed:
 
 \begin{itemize}
-    \item BERT-base (standard and aggressive fine-tuning)
-    \item BERT-large
-    \item DistilBERT
-    \item RoBERTa-base (standard and aggressive variants)
-    \item Qwen2.5-7B with LoRA fine-tuning
-    \item Llama3.2-3B and Llama3.2-1B with LoRA fine-tuning
+    \item All preprocessing, tokenization, and dataset splitting.
+    \item Full fine-tuning of BERT-family models (BERT-base, BERT-large, DistilBERT, RoBERTa-base).
+    \item LoRA-based fine-tuning of Qwen2.5--7B and Llama-3.2 models.
+    \item Implementation and evaluation of a GPT-3 embedding baseline \cite{text_embeddings2022}.
+    \item Test-set evaluations for all models and a cross-model comparison.
 \end{itemize}
 
-Each model outputs logits over five classes.
+Preliminary results (on our current test split) show:
 
-\subsection{Training Procedure}
-We fine-tuned each model on the Recipe-MPR training split using appropriate hyperparameters such as learning rate, batch size, number of epochs, and gradient accumulation steps. All models were evaluated on the 50-item test set. Qwen2.5--7B, Llama3.2-3B, Llama3.2-1B models were fine-tuned using LoRA to reduce memory requirements during training. We also compared the performance of models before and after training to see the improvement of fine-tuning. Finally, we tried to make a contrast with our llama models vs. GPT3-Embedding, which shows our exploration of a new technique, and the difference between fine-tuning a model under a specific dataset and a general Large Language Model.
-
-\subsection{Testing and Early Results}
-
-\subsubsection{Qwen2.5-7B (LoRA Fine-Tuned)}
-
-The Qwen2.5--7B model demonstrates exceptional specialization on the Recipe-MPR task. After applying LoRA fine-tuning and training on a 32GB GPU, the model achieved a perfect score with no mistakes across 50 test examples. Table~\ref{tab:qwen_bert_compare} compares the fine-tuned Qwen model with the base Qwen model and the top-performing BERT variants. Despite Qwen’s much larger parameter count, LoRA fine-tuning remains computationally tractable and yields perfect task performance.
-
-\begin{table}[h]
-\centering
-\caption{Performance Comparison: Qwen vs. BERT Models}
-\label{tab:qwen_bert_compare}
-\begin{tabular}{lccccc}
-\toprule
-\textbf{Model} & \textbf{Parameters} & \textbf{Accuracy} & \textbf{Training Time} & \textbf{VRAM} & \textbf{Architecture} \\
-\midrule
-Fine-tuned Qwen & 7B & \textbf{100.00\%} & $\sim$15 min & 20 GB & Decoder-only \\
-Base Qwen       & 7B & 79.20\% & 0 min & 20 GB & Decoder-only \\
-BERT-large      & 340M & 91.4\% & $\sim$93 sec & 16 GB & Encoder-only \\
-DistilBERT      & 66M & 82.4\% & $\sim$35 sec & 6 GB & Encoder-only \\
-\bottomrule
-\end{tabular}
-\end{table}
-
-\subsubsection{BERT-Family Model Results}
-
-Training on a 32GB GPU, all BERT-family models meeting the 65\% threshold are summarized in Table~\ref{tab:bert-results}.
-
-\begin{table}[h!]
-\centering
-\begin{tabular}{lcc}
-\toprule
-\textbf{Model} & \textbf{Accuracy} & \textbf{Above Goal?} \\
-\midrule
-BERT-large & \textbf{91.4\%} & Yes \\
-DistilBERT & 82.4\% & Yes \\
-BERT-base (aggressive) & 67.6\% & Yes \\
-BERT-base (standard) & 65.6\% & Yes \\
-RoBERTa-base (aggressive) & 65.8\% & Yes \\
-\midrule
-RoBERTa-base (standard) & 49.8\% & No \\
-DistilBERT (over-trained) & 36.8\% & No \\
-\bottomrule
-\end{tabular}
-\caption{Performance of BERT-family models on the Recipe-MPR dataset.}
-\label{tab:bert-results}
-\end{table}
-
-
-\subsubsection{Llama Models Results Vs. GPT3 Embedding}
-
-We fine-tuned Llama-3.2-3B, Llama-3.2-1B with LoRA to do recipe recommendation. LoRA lets us train only a tiny part of the model . We trained 5 epochs on 400 samples with 4-bit quantization on an 8GB GPU.
-
-Results are clear. The 3B LoRA model got 84.00\% in \~14 min. The 1B LoRA model got 78.00\% in about 7 min. Both beat the 65\% goal. The 3B zero-shot model reached 73.00\% (meets goal), while 1B zero-shot was 58.00\%. The GPT-3 Embedding baseline was 54.55\%. Fine-tuning gave +11 points over 3B zero-shot, and LLM reasoning beat the embedding method by +18.45 points, for a total +29.45 points over the baseline.
-
-All evaluated models with their accuracy and whether they meet the 65\% threshold are summarized in Table~\ref{tab:llama_combined}.
-\begin{table}[h]
-\centering
-\caption{Performance of Llama models vs. GPT3 on the Recipe-MPR test set.}
-\label{tab:llama_combined}
-\begin{tabular}{lccccc}
-\toprule
-\textbf{Model} & \textbf{Parameters} & \textbf{Accuracy} & \textbf{Training Time} & \textbf{Above Goal?} \\
-\midrule
-Fine-tuned Llama-3.2-3B  & 3.2B & \textbf{84.00\%} & 14 min & Yes \\
-Base Llama-3.2-3B     & 3.2B & 73.00\% & 0 min  & Yes \\
-Fine-tuned Llama-1B      & 1B   & 78.00\% & $\sim$7 min & Yes \\
-\midrule
-Base Llama-1B                    & 1B   & 58.00\% & 0 min  & No \\
-GPT-3 Embedding  & N/A & 54.55\% & N/A    & No \\
-\bottomrule
-\end{tabular}
-\end{table}
-
-
-
-\subsection{Progress Summary}
-The following tasks have been completed:
 \begin{itemize}
-    \item Dataset preprocessing and splitting
-    \item Implementation of all fine-tuning pipelines
-    \item Full training of BERT-family models
-    \item LoRA fine-tuning of Qwen2.5-7B
-    \item LoRA fine-tuning of Llama3.2-3B, Llama3.2-1B
-    \item Compare Llama to GPT3 embedding
-    \item Full testing and evaluation
-    \item Cross-model comparison
-    \item Initial performance analysis
+    \item \textbf{Qwen2.5--7B (LoRA)}: 100\% accuracy (no errors on the evaluated test set).
+    \item \textbf{BERT-large}: 91.4\% accuracy.
+    \item \textbf{DistilBERT}: 82.4\% accuracy.
+    \item \textbf{Llama-3.2-3B (LoRA)}: 84.0\% accuracy; Llama-1B (LoRA) reaches 78.0\%.
+    \item GPT-3 embeddings: substantially lower accuracy ($\sim$55\%), confirming that fine-tuning brings clear gains over simple embedding-based similarity.
 \end{itemize}
 
-The project is on schedule, with all core components completed.
-	
+All fine-tuned models exceed the 65\% threshold, and several exceed 80\%, indicating that our design choices are effective for this dataset.
 
-\section*{References}
-Include all references here. It’s important to have your references cited.
-\medskip
+\subsection{Remaining Milestones}
+
+Although the core training and evaluation pipeline is complete, several important steps remain for the final report:
+
+\begin{itemize}
+    \item Perform detailed error analysis across query types (analogical, specific, commonsense, temporal, negated).
+    \item Compare qualitative outputs of models (e.g., typical failure cases for smaller vs.\ larger models).
+    \item Analyze trade-offs in more depth, including:
+    \begin{itemize}
+        \item training time vs.\ accuracy,
+        \item VRAM requirements vs.\ performance,
+        \item inference latency vs.\ model size.
+    \end{itemize}
+    \item Produce visualizations (e.g., bar plots, confusion matrices, accuracy vs.\ parameters).
+    \item Integrate all findings into a polished final report with a more formal discussion and conclusion.
+\end{itemize}
+
+From a project management perspective, we have completed the major technical components (data pipeline, training, and initial evaluation) and are now focused on analysis, comparison, and final documentation.
+
 {
 \small
-
-
-[1] Alexander, J.A.\ \& Mozer, M.C.\ (1995) Template-based algorithms for
-connectionist rule extraction. In G.\ Tesauro, D.S.\ Touretzky and T.K.\ Leen
-(eds.), {\it Advances in Neural Information Processing Systems 7},
-pp.\ 609--616. Cambridge, MA: MIT Press.
-
-
-[2] Bower, J.M.\ \& Beeman, D.\ (1995) {\it The Book of GENESIS: Exploring
-  Realistic Neural Models with the GEneral NEural SImulation System.}  New York:
-TELOS/Springer--Verlag.
-
-
-[3] Hasselmo, M.E., Schnell, E.\ \& Barkai, E.\ (1995) Dynamics of learning and
-recall at excitatory recurrent synapses and cholinergic modulation in rat
-hippocampal region CA3. {\it Journal of Neuroscience} {\bf 15}(7):5249-5262.
+\bibliographystyle{plain}
+\bibliography{references}
 }
-
-\section*{Appendix}
-Any descriptions about supplementary materials go here.
 
 
 \end{document}

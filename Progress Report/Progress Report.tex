@@ -152,13 +152,82 @@ At this stage of the project, the following components are completed:
 
 Preliminary results (on our current test split) show:
 
-\begin{itemize}
-    \item \textbf{Qwen2.5--7B (LoRA)}: 100\% accuracy (no errors on the evaluated test set).
-    \item \textbf{BERT-large}: 91.4\% accuracy.
-    \item \textbf{DistilBERT}: 82.4\% accuracy.
-    \item \textbf{Llama-3.2-3B (LoRA)}: 84.0\% accuracy; Llama-1B (LoRA) reaches 78.0\%.
-    \item GPT-3 embeddings: substantially lower accuracy ($\sim$55\%), confirming that fine-tuning brings clear gains over simple embedding-based similarity.
-\end{itemize}
+The Qwen2.5--7B model demonstrates exceptional specialization on the Recipe-MPR task. After applying LoRA fine-tuning and training on a 32GB GPU, the model achieved a perfect score with no mistakes across 50 test examples. Table~\ref{tab:qwen_bert_compare} compares the fine-tuned Qwen model with the base Qwen model and the top-performing BERT variants. Despite Qwen’s much larger parameter count, LoRA fine-tuning remains computationally tractable and yields perfect task performance.
+
+\begin{table}[h]
+\centering
+\caption{Performance Comparison: Qwen vs. BERT Models}
+\label{tab:qwen_bert_compare}
+\begin{tabular}{lccccc}
+\toprule
+\textbf{Model} & \textbf{Parameters} & \textbf{Accuracy} & \textbf{Training Time} & \textbf{VRAM} & \textbf{Architecture} \\
+\midrule
+Fine-tuned Qwen & 7B & \textbf{100.00\%} & $\sim$15 min & 20 GB & Decoder-only \\
+Base Qwen       & 7B & 79.20\% & 0 min & 20 GB & Decoder-only \\
+BERT-large      & 340M & 91.4\% & $\sim$93 sec & 16 GB & Encoder-only \\
+DistilBERT      & 66M & 82.4\% & $\sim$35 sec & 6 GB & Encoder-only \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Training on a 32GB GPU, all BERT-family models meeting the 65\% threshold are summarized in Table~\ref{tab:bert-results}.
+
+\begin{table}[h!]
+\centering
+\caption{Performance of BERT-family models on the Recipe-MPR dataset.}
+\label{tab:bert-results}
+\begin{tabular}{lcc}
+\toprule
+\textbf{Model} & \textbf{Accuracy} & \textbf{Above Goal?} \\
+\midrule
+BERT-large & \textbf{91.4\%} & Yes \\
+DistilBERT & 82.4\% & Yes \\
+BERT-base (aggressive) & 67.6\% & Yes \\
+BERT-base (standard) & 65.6\% & Yes \\
+RoBERTa-base (aggressive) & 65.8\% & Yes \\
+\midrule
+RoBERTa-base (standard) & 49.8\% & No \\
+DistilBERT (over-trained) & 36.8\% & No \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+
+We fine-tuned Llama-3.2-3B, Llama-3.2-1B with LoRA to do recipe recommendation. LoRA lets us train only a tiny part of the model . %We trained 5 epochs on 400 samples with 4-bit quantization on an 8GB GPU.
+
+Results are clear. The 3B LoRA model got 84.00\% in \~14 min. The 1B LoRA model got 78.00\% in about 7 min. Both beat the 65\% goal. The 3B zero-shot model reached 73.00\% (meets goal), while 1B zero-shot was 58.00\%. The GPT-3 Embedding baseline was 54.55\%. Fine-tuning gave +11 points over 3B zero-shot, and LLM reasoning beat the embedding method by +18.45 points, for a total +29.45 points over the baseline.
+
+The architecture of all Llama models are Decoder-only. All evaluated models with their accuracy and whether they meet the 65\% threshold are summarized in Table~\ref{tab:llama_combined}.
+\begin{table}[h]
+\centering
+\caption{Performance of Llama models vs. GPT3 on the Recipe-MPR test set.}
+\label{tab:llama_combined}
+\begin{tabular}{lcccccc}
+\toprule
+\textbf{Model} & \textbf{Parameters} & \textbf{Accuracy} & \textbf{Training Time}  & \textbf{VRAM}   & \textbf{Above Goal?} \\
+\midrule
+Fine-tuned Llama-3.2-3B  & 3.2B & \textbf{84.00\%} & 14 min &  6.4 GB  & Yes \\
+Base Llama-3.2-3B        & 3.2B &  73.00\% &  0 min & 6.4 GB  & Yes \\
+Fine-tuned Llama-1B      & 1B   &  78.00\% & $\sim$7 min & 2.0 GB  & Yes \\
+\midrule
+Base Llama-1B            & 1B   &  58.00\% & 0 min & 2.0 GB   & No \\
+GPT-3 Embedding          & N/A  &  54.55\%  & N/A & N/A    & No \\
+\bottomrule
+\end{tabular}
+
+\vspace{4pt}
+\footnotesize
+
+\end{table}
+
+
+% \begin{itemize}
+%     \item \textbf{Qwen2.5--7B (LoRA)}: 100\% accuracy (no errors on the evaluated test set).
+%     \item \textbf{BERT-large}: 91.4\% accuracy.
+%     \item \textbf{DistilBERT}: 82.4\% accuracy.
+%     \item \textbf{Llama-3.2-3B (LoRA)}: 84.0\% accuracy; Llama-1B (LoRA) reaches 78.0\%.
+%     \item GPT-3 embeddings: substantially lower accuracy ($\sim$55\%), confirming that fine-tuning brings clear gains over simple embedding-based similarity.
+% \end{itemize}
 
 All fine-tuned models exceed the 65\% threshold, and several exceed 80\%, indicating that our design choices are effective for this dataset.
 
@@ -169,12 +238,12 @@ Although the core training and evaluation pipeline is complete, several importan
 \begin{itemize}
     \item Perform detailed error analysis across query types (analogical, specific, commonsense, temporal, negated).
     \item Compare qualitative outputs of models (e.g., typical failure cases for smaller vs.\ larger models).
-    \item Analyze trade-offs in more depth, including:
-    \begin{itemize}
-        \item training time vs.\ accuracy,
-        \item VRAM requirements vs.\ performance,
-        \item inference latency vs.\ model size.
-    \end{itemize}
+    % \item Analyze trade-offs in more depth, including:
+    % \begin{itemize}
+    %     \item training time vs.\ accuracy,
+    %     \item VRAM requirements vs.\ performance,
+    %     \item inference latency vs.\ model size.
+    % \end{itemize}
     \item Produce visualizations (e.g., bar plots, confusion matrices, accuracy vs.\ parameters).
     \item Integrate all findings into a polished final report with a more formal discussion and conclusion.
 \end{itemize}

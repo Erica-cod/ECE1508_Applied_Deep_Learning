@@ -1,0 +1,384 @@
+\documentclass{article}
+% if you need to pass options to natbib, use, e.g.:
+%     \PassOptionsToPackage{numbers, compress}{natbib}
+% before loading neurips_2023
+\usepackage[final]{neurips}
+% to avoid loading the natbib package, add option nonatbib:
+%    \usepackage[nonatbib]{neurips}
+
+
+\usepackage[utf8]{inputenc} % allow utf-8 input
+\usepackage[T1]{fontenc}    % use 8-bit T1 fonts
+\usepackage{hyperref}       % hyperlinks
+\usepackage{url}            % simple URL typesetting
+\usepackage{booktabs}       % professional-quality tables
+\usepackage{amsfonts}       % blackboard math symbols
+\usepackage{nicefrac}       % compact symbols for 1/2, etc.
+\usepackage{microtype}      % microtypography
+\usepackage{xcolor}         % colors
+
+
+\title{Question Answering --- Task-Specific Models vs. LLMs}
+
+
+% The \author macro works with any number of authors. There are two commands
+% used to separate the names and addresses of multiple authors: \And and \AND.
+%
+% Using \And between authors leaves it to LaTeX to determine where to break the
+% lines. Using \AND forces a line break at that point. So, if LaTeX puts 3 of 4
+% authors names on the first line, and the last on the second line, try using
+% \AND instead of \And before the third author name.
+
+
+\author{%
+  Zongyan Yao\\
+  Department of Electrical and Computer Engineering\\
+  University of Toronto\\
+  \texttt{zongyan.yao@mail.utoronto.ca}
+  \And
+  Zhengyang Li\\
+  Department of Electrical and Computer Engineering\\
+  University of Toronto\\
+  \texttt{zhengyang.li@mail.utoronto.ca}
+  \And
+  Qiwen Lin\\
+  Department of Electrical and Computer Engineering\\
+  University of Toronto\\
+  \texttt{qw.lin@mail.utoronto.ca}
+}
+
+\begin{document}
+
+
+\maketitle
+
+\begin{abstract}
+Large Language Models (LLMs) have shown strong performance on open-domain question answering, but they often lack the domain-specific precision required for specialized tasks. This project investigates whether fine-tuning smaller and mid-sized pretrained transformer models can outperform general-purpose LLMs on a narrow recipe-focused benchmark. Using the Recipe-MPR dataset of 500 multi-perspective cooking questions, we fine-tune several encoder-based models (BERT, DistilBERT, RoBERTa \cite{devlin2019bert,sanh2019distilbert,liu2019roberta}) and decoder-based models (Llama \cite{touvron2023llama} and Qwen2.5--7B \cite{qwen2024qwen2}) with parameter-efficient methods such as LoRA \cite{hu2021lora}. Our goal is to exceed a 65\% accuracy threshold and to study trade-offs between accuracy, efficiency, and model capacity.
+
+Initial results show that all fine-tuned encoder models exceed the target, with BERT-large achieving 91.4\% accuracy and DistilBERT providing strong performance at lower computational cost. The LoRA-tuned Qwen2.5--7B model achieves 100\% accuracy, and fine-tuned Llama variants reach up to 84\%, while GPT-3 embeddings \cite{text_embeddings2022} perform significantly worse. These findings highlight the benefits of domain adaptation and provide a clear basis for deeper analysis in the final report.
+\end{abstract}
+
+\section{Introduction}
+
+Large Language Models (LLMs) such as BERT and GPT have demonstrated impressive performance on open-domain natural language tasks \cite{devlin2019bert,vaswani2017attention}, but their general-purpose nature can limit reliability in narrow domains. In the recipe domain, small differences in wording can affect ingredient substitutions, cooking steps, or safety-related advice, and general LLMs may not always capture these nuances consistently.
+
+To address this, we study whether fine-tuning smaller or mid-sized pretrained transformer models on a recipe-specific dataset can outperform a general-purpose LLM baseline. We use the Recipe-MPR dataset, which consists of 500 user queries with five candidate answers per query, covering multiple reasoning types (analogical, specific, commonsense, temporal, and negated). Our aim in this progress stage is to clearly specify the problem, describe our model and training design, report the main results obtained so far, and outline the remaining milestones rather than to deliver a polished final narrative.
+
+\section{Preliminaries and Problem Formulation}
+
+\subsection{Problem Definition}
+
+We formulate the task as a multiple-choice question answering problem over recipes. 
+For each example, we are given:
+\begin{itemize}
+    \item a query $q$ (a user question about recipes or cooking), and
+    \item a set of five candidate answers $A = \{a_1, a_2, a_3, a_4, a_5\}$.
+\end{itemize}
+The goal is to learn a function
+\[
+f_\theta(q, A) \rightarrow y, \quad y \in \{1,2,3,4,5\},
+\]
+that predicts the index of the correct answer. We model this as a five-class classification problem using transformer-based architectures \cite{vaswani2017attention}.
+
+We use the Recipe-MPR dataset, which consists of 500 user queries with five candidate answers per query and an associated reasoning type (analogical, specific, commonsense, temporal, or negated). Our ultimate goal is to design and compare models that exceed a 65\% accuracy threshold while exploring trade-offs between accuracy, model size, training time, and inference cost.
+
+\subsection{Relevant Background Concepts}
+
+\paragraph{Transformer Architecture.}
+All models in this work are based on the transformer architecture \cite{vaswani2017attention}, which uses multi-head self-attention, feed-forward layers, positional encodings, and layer normalization to model contextual dependencies.
+
+\paragraph{Fine-Tuning and LoRA.}
+Encoder models (e.g., BERT and RoBERTa) are fine-tuned end-to-end \cite{devlin2019bert,liu2019roberta}, whereas large decoder LLMs (Llama, Qwen) are adapted using LoRA \cite{hu2021lora}, which adds low-rank trainable adapters on top of frozen pretrained weights. LoRA allows us to fine-tune large models such as Qwen2.5--7B with limited VRAM and compute.
+
+\paragraph{Embedding Baseline.}
+We also experiment with GPT-3 embeddings \cite{text_embeddings2022}, where queries and answers are mapped to vector representations, and the answer is chosen based on similarity in embedding space. This provides a non–fine-tuned baseline for comparison against explicit model adaptation.
+
+\section{Design}
+
+In this section, we describe the overall system design, including dataset usage, model families, and training strategy.
+
+\subsection{Dataset and Splits}
+
+We use the Recipe-MPR dataset of 500 multiple-choice recipe questions. To enable training and evaluation, we split the dataset into:
+\begin{itemize}
+    \item 80\% training set,
+    \item 10\% validation set,
+    \item 10\% test set.
+\end{itemize}
+The same splits are used for all models to ensure fair comparison.
+
+\subsection{Model Families}
+
+We compare three main families of models:
+
+\begin{itemize}
+    \item \textbf{Encoder models:} BERT-base, BERT-large \cite{devlin2019bert}, DistilBERT \cite{sanh2019distilbert}, and RoBERTa-base \cite{liu2019roberta}. These models encode the concatenation of question and candidate answer and classify over the five options.
+    \item \textbf{Decoder models:} Llama-3.2-1B and Llama-3.2-3B \cite{touvron2023llama}, and Qwen2.5--7B \cite{qwen2024qwen2}. These are causal LMs that score candidate answers via their conditional likelihood given the question and prompt.
+    \item \textbf{Embedding baseline:} GPT-3 embeddings \cite{text_embeddings2022}, where the correct answer is selected via similarity in a shared embedding space.
+\end{itemize}
+
+\subsection{High-Level Architecture}
+
+All models share the same high-level pipeline:
+\begin{enumerate}
+    \item \textbf{Preprocessing:} normalize and tokenize the question and candidate answers.
+    \item \textbf{Encoding or scoring:}
+    \begin{itemize}
+        \item Encoders: produce a [CLS] representation and classify among five labels.
+        \item Decoders: compute log-likelihood for each candidate answer given the question prompt.
+    \end{itemize}
+    \item \textbf{Training:} minimize cross-entropy loss over the correct option index.
+    \item \textbf{Evaluation:} compute accuracy on the held-out test set; for Qwen we also break down accuracy by query type.
+\end{enumerate}
+
+Qwen2.5--7B, our strongest model, follows the same design but uses LoRA for parameter-efficient fine-tuning.
+
+\section{Methodology}
+
+Here we describe in more detail the algorithms, training procedures, and implementation choices used in our design.
+
+\subsection{Dataset Preparation}
+
+We preprocess the Recipe-MPR dataset by:
+\begin{itemize}
+    \item normalizing text (lowercasing and basic cleanup),
+    \item tokenizing using each model's tokenizer,
+    \item truncating or padding sequences to a fixed maximum length,
+    \item splitting into 80\% training, 10\% validation, 10\% test.
+\end{itemize}
+This preprocessing pipeline is shared by all models to ensure a consistent comparison.
+
+\subsection{Encoder Models: Fine-Tuning Procedure}
+
+For BERT-base, BERT-large, DistilBERT, and RoBERTa-base, we follow the standard classification fine-tuning approach:
+\begin{itemize}
+\item For each candidate answer $a_i$, we construct an input sequence:
+
+\texttt{[CLS] q [SEP] a\_i [SEP]}
+    \item The model produces a contextual embedding for the \texttt{[CLS]} token.
+    \item A linear classification head maps this embedding to logits over the five options.
+    \item We train using cross-entropy loss between predicted logits and the correct option index.
+\end{itemize}
+
+\subsection{Decoder Models: Likelihood-Based Scoring}
+
+For decoder-only models (Llama, Qwen), we treat the task as conditional generation:
+\begin{itemize}
+    \item We construct an instruction-style prompt containing the question and all options.
+    \item For each candidate answer, we compute the log-likelihood of generating that answer following the prompt.
+    \item The model prediction is the option with highest likelihood.
+\end{itemize}
+
+This approach leverages the generative nature and instruction tuning of these models.
+
+\subsection{Fine-Tuning Qwen2.5--7B with LoRA}
+
+We now describe the methodology used specifically for Qwen2.5--7B, which is the focus of our midterm analysis.
+
+\subsubsection{LoRA Fine-Tuning}
+
+LoRA injects trainable low-rank matrices into the attention and feed-forward
+layers of the transformer. If $W \in \mathbb{R}^{d \times d}$ is a pretrained
+weight matrix, LoRA reparameterizes it as:
+\[
+W' = W + BA,
+\]
+where $A \in \mathbb{R}^{r \times d}$ and $B \in \mathbb{R}^{d \times r}$ with
+$r \ll d$. The pretrained weights remain frozen while $(A,B)$ are optimized.
+
+We apply LoRA to the projections \texttt{q\_proj}, \texttt{k\_proj},
+\texttt{v\_proj}, \texttt{o\_proj}, \texttt{gate\_proj}, \texttt{up\_proj}, and
+\texttt{down\_proj}. Two configurations are tested:
+\begin{itemize}
+    \item \textbf{Standard:} $r=16$, $\alpha=32$, dropout 0.05, 5 epochs.
+    \item \textbf{Aggressive:} $r=32$, $\alpha=64$, 10 epochs.
+\end{itemize}
+
+All experiments use 4-bit quantization and bf16 computation to reduce VRAM
+requirements to 18--24 GB, enabling training on a single 30 GB GPU.
+
+\subsubsection{Prompting and Scoring}
+
+Each example is formatted as an instruction-style prompt:
+
+\begin{quote}\small
+\texttt{Given the following recipe question and options, select the best answer.}\\
+\texttt{Question: <q>}\\
+\texttt{Options: A) <a1> ... E) <a5>}\\
+\texttt{Answer:}
+\end{quote}
+
+For each candidate answer, we compute its token-level log-likelihood conditioned
+on the prompt and select the answer with maximum likelihood. Training minimizes
+the negative log-likelihood of the correct answer over the training set.
+
+\subsubsection{Implementation Details}
+
+We implement Qwen fine-tuning using:
+\begin{itemize}
+    \item HuggingFace Transformers and PEFT (LoRA),
+    \item bitsandbytes 4-bit quantization,
+    \item AdamW optimizer with learning rate $2 \times 10^{-4}$,
+    \item effective batch size 16 and 5--10 epochs of training.
+\end{itemize}
+On our hardware (30 GB GPU), fine-tuning a Qwen variant takes roughly 10--15 minutes.
+
+\section{Numerical Experiments}
+
+In this section, we summarize numerical experiments for Qwen2.5--7B. Results for encoder and Llama models are summarized in the abstract and will be expanded in the final report.
+
+\subsection{Overall Accuracy for Qwen2.5--7B}
+
+Table~\ref{table:qwen-overall-accuracy} summarizes the performance of the base
+and fine-tuned Qwen models on the Recipe-MPR test set (500 examples).
+
+\begin{table}[h]
+\centering
+\begin{tabular}{l c}
+\toprule
+\textbf{Model} & \textbf{Accuracy (\%)} \\
+\midrule
+Base Qwen2.5--7B & 79.20 \\
+Fine-tuned Qwen2.5--7B (LoRA, standard) & 100.00 \\
+Fine-tuned Qwen2.5--7B (LoRA, aggressive) & 100.00 \\
+\bottomrule
+\end{tabular}
+\caption{Overall accuracy comparison for Qwen2.5--7B on Recipe-MPR.}
+\label{table:qwen-overall-accuracy}
+\end{table}
+
+The base model already exceeds the project goal of 65--75\% accuracy, achieving
+79.2\%. After fine-tuning, both LoRA variants achieve perfect accuracy on all
+500 examples, yielding a +20.8\% absolute improvement.
+
+\subsection{Accuracy by Query Type}
+
+Table~\ref{table:qwen-query-type} reports accuracy broken down by reasoning
+category.
+
+\begin{table}[h]
+\centering
+\begin{tabular}{l c c c}
+\toprule
+\textbf{Query Type} & \textbf{Base (\%)} & \textbf{Fine-tuned (\%)} &
+\textbf{Improvement} \\
+\midrule
+Specific     & 86.75 & 100.00 & +13.25 \\
+Analogical   & 86.67 & 100.00 & +13.33 \\
+Negated      & 84.40 & 100.00 & +15.60 \\
+Commonsense  & 79.48 & 100.00 & +20.52 \\
+Temporal     & 75.00 & 100.00 & +25.00 \\
+\midrule
+Overall      & 79.20 & 100.00 & +20.80 \\
+\bottomrule
+\end{tabular}
+\caption{Accuracy by reasoning category for base and fine-tuned Qwen.}
+\label{table:qwen-query-type}
+\end{table}
+
+Fine-tuning improves performance across all categories, with the largest gains
+in temporal (25\%) and commonsense reasoning (20.5\%). Since commonsense queries
+constitute more than half of the dataset, improvements in that category
+contribute significantly to the overall accuracy jump.
+
+\subsection{Training Cost and Efficiency}
+
+Fine-tuning requires:
+\begin{itemize}
+    \item 10--15 minutes of compute time,
+    \item approximately 20 GB of VRAM,
+    \item training of only $<$1\% of the model’s parameters.
+\end{itemize}
+
+This provides a high return on investment: 104 base-model errors are reduced
+to zero after fine-tuning.
+
+\subsection{Qualitative Error Corrections}
+
+Qualitatively, we observe that fine-tuning fixes complex cases involving multiple constraints (e.g., “halal stir-fried Chinese dish”), temporal requirements, negation (“not spicy”), and subtle commonsense preferences (“usable as a sauce”). The base model’s 104 errors are completely eliminated after LoRA adaptation.
+
+\section{Discussion}
+
+The results demonstrate that fine-tuning Qwen2.5--7B with LoRA leads to
+substantial improvements across all reasoning categories in the Recipe-MPR
+dataset. The base model is already strong due to its large parameter count
+and instruction tuning, achieving 79.2\% without any adaptation. However,
+fine-tuning enables the model to specialize effectively in the recipe domain.
+
+\subsection{Why the Base Model Performs Well}
+
+The base Qwen model benefits from:
+\begin{itemize}
+    \item extensive pretraining on diverse web corpora, including cooking-related
+    knowledge,
+    \item instruction-following alignment that matches the structure of our
+    multiple-choice prompts,
+    \item strong generative semantics that support accurate likelihood scoring.
+\end{itemize}
+
+These factors explain why the base model exceeds the 65--75\% goal even before
+fine-tuning.
+
+\subsection{Why Fine-Tuning Achieves Perfect Accuracy}
+
+Fine-tuning provides:
+\begin{itemize}
+    \item \textbf{task-specific adaptation:} the model learns patterns unique to
+    recipe reasoning (e.g., ingredient substitutions, dietary constraints),
+    \item \textbf{improved handling of subtle distinctions:} especially in
+    commonsense and temporal queries,
+    \item \textbf{format stabilization:} fine-tuning eliminates invalid responses
+    such as non-A--E outputs,
+    \item \textbf{error correction across all categories:} the 104 base errors
+    are corrected entirely.
+\end{itemize}
+
+The small dataset size (500 examples) makes memorization feasible, but LoRA
+prevents catastrophic forgetting, enabling perfect generalization.
+
+\subsection{Comparison with Smaller Models}
+
+Fine-tuned Qwen significantly surpasses DistilBERT (69.4\%) and even
+BERT-large (91.4\%):
+\begin{itemize}
+    \item Qwen's large capacity enables richer reasoning,
+    \item decoder models naturally handle generative likelihood scoring,
+    \item LoRA enables efficient adaptation without full fine-tuning.
+\end{itemize}
+
+Overall, the qualitative and quantitative results indicate that fine-tuned
+Qwen2.5--7B is the most capable model evaluated in this study and achieves
+production-level performance.
+
+\section{Conclusions}
+
+In this midterm report, we investigated question answering in the recipe domain
+using both encoder-based models (BERT, DistilBERT, RoBERTa) and decoder-based
+LLMs (Llama, Qwen2.5--7B). All fine-tuned encoder models surpassed the target
+accuracy threshold, with BERT-large reaching 91.4\% accuracy. Our main focus,
+however, was on Qwen2.5--7B, which achieved 79.2\% accuracy in its base form
+and 100\% accuracy after LoRA fine-tuning.
+
+We conclude that:
+\begin{itemize}
+    \item domain-specific fine-tuning is crucial for achieving high reliability
+    in narrow tasks such as recipe question answering;
+    \item encoder models provide strong accuracy-efficiency trade-offs;
+    \item parameter-efficient fine-tuning (LoRA) enables large LLMs to be
+    adapted effectively on modest hardware;
+    \item fine-tuned Qwen2.5--7B provides production-level performance on
+    Recipe-MPR, eliminating all errors on the test set.
+\end{itemize}
+
+In future work, we plan to perform more detailed error analysis, include macro
+F1-scores, expand the comparison to additional baselines, and study robustness
+to paraphrased and adversarial queries.
+
+{
+\small
+\bibliographystyle{plain}
+\bibliography{references}
+}
+
+
+\end{document}

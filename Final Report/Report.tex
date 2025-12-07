@@ -225,9 +225,53 @@ On our hardware (30 GB GPU), fine-tuning a Qwen variant takes roughly 10--15 min
 
 \section{Numerical Experiments}
 
-In this section, we summarize numerical experiments for Qwen2.5--7B. Results for encoder and Llama models are summarized in the abstract and will be expanded in the final report.
+In this section, we present numerical experiments for both encoder-based BERT variants and the decoder-based Qwen2.5--7B model on the Recipe-MPR test set.
 
-\subsection{Overall Accuracy for Qwen2.5--7B}
+\subsection{BERT Variant Results}
+
+Table~\ref{table:bert-accuracy} summarizes the test accuracy for the fine-tuned BERT variants.
+
+\begin{table}[h]
+\centering
+\begin{tabular}{l c c}
+\toprule
+\textbf{Model} & \textbf{Parameters} & \textbf{Accuracy (\%)} \\
+\midrule
+RoBERTa-base & 125M & 92.40 \\
+BERT-large & 340M & 91.40 \\
+DistilBERT & 66M & 88.80 \\
+\bottomrule
+\end{tabular}
+\caption{Test accuracy of fine-tuned BERT variants on Recipe-MPR.}
+\label{table:bert-accuracy}
+\end{table}
+
+Table~\ref{table:bert-query-type} reports accuracy by reasoning category for RoBERTa-base, comparing the baseline (non-fine-tuned) model against the fine-tuned version.
+
+\begin{table}[h]
+\centering
+\begin{tabular}{l c c c}
+\toprule
+\textbf{Query Type} & \textbf{Baseline (\%)} & \textbf{Fine-tuned (\%)} & \textbf{Improvement} \\
+\midrule
+Analogical   & 20.00 & 100.00 & +80.00 \\
+Negated      & 23.85 & 99.08 & +75.23 \\
+Temporal     & 18.75 & 96.88 & +78.13 \\
+Specific     & 26.49 & 94.70 & +68.21 \\
+Commonsense  & 25.37 & 91.42 & +66.05 \\
+\midrule
+Overall      & 23.80 & 92.40 & +68.60 \\
+\bottomrule
+\end{tabular}
+\caption{Accuracy by reasoning category for RoBERTa-base: baseline vs.\ fine-tuned.}
+\label{table:bert-query-type}
+\end{table}
+
+All three models exceed the 65\% accuracy target by a substantial margin. RoBERTa-base achieves the highest accuracy (92.4\%) despite having fewer parameters than BERT-large, benefiting from improved pretraining procedures. Training times range from 1.7 minutes for DistilBERT to 7.8 minutes for BERT-large.
+
+\subsection{Qwen2.5--7B Results}
+
+\subsubsection{Overall Accuracy}
 
 Table~\ref{table:qwen-overall-accuracy} summarizes the performance of the base
 and fine-tuned Qwen models on the Recipe-MPR test set (500 examples).
@@ -251,7 +295,7 @@ The base model already exceeds the project goal of 65--75\% accuracy, achieving
 79.2\%. After fine-tuning, both LoRA variants achieve perfect accuracy on all
 500 examples, yielding a +20.8\% absolute improvement.
 
-\subsection{Accuracy by Query Type}
+\subsubsection{Accuracy by Query Type}
 
 Table~\ref{table:qwen-query-type} reports accuracy broken down by reasoning
 category.
@@ -281,7 +325,7 @@ in temporal (25\%) and commonsense reasoning (20.5\%). Since commonsense queries
 constitute more than half of the dataset, improvements in that category
 contribute significantly to the overall accuracy jump.
 
-\subsection{Training Cost and Efficiency}
+\subsubsection{Training Cost and Efficiency}
 
 Fine-tuning requires:
 \begin{itemize}
@@ -293,7 +337,7 @@ Fine-tuning requires:
 This provides a high return on investment: 104 base-model errors are reduced
 to zero after fine-tuning.
 
-\subsection{Qualitative Error Corrections}
+\subsubsection{Qualitative Error Corrections}
 
 Qualitatively, we observe that fine-tuning fixes complex cases involving multiple constraints (e.g., “halal stir-fried Chinese dish”), temporal requirements, negation (“not spicy”), and subtle commonsense preferences (“usable as a sauce”). The base model’s 104 errors are completely eliminated after LoRA adaptation.
 

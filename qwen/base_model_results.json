@@ -1,0 +1,58 @@
+[
+  {
+    "model": "Qwen/Qwen2.5-7B-Instruct",
+    "accuracy": 74.0,
+    "correct": 37,
+    "total": 50,
+    "by_type": {
+      "Specific": {
+        "correct": 7,
+        "total": 11
+      },
+      "Commonsense": {
+        "correct": 18,
+        "total": 26
+      },
+      "Temporal": {
+        "correct": 3,
+        "total": 4
+      },
+      "Analogical": {
+        "correct": 3,
+        "total": 3
+      },
+      "Negated": {
+        "correct": 8,
+        "total": 9
+      }
+    }
+  },
+  {
+    "model": "Qwen/Qwen3-8B",
+    "accuracy": 82.0,
+    "correct": 41,
+    "total": 50,
+    "by_type": {
+      "Specific": {
+        "correct": 9,
+        "total": 11
+      },
+      "Commonsense": {
+        "correct": 19,
+        "total": 26
+      },
+      "Temporal": {
+        "correct": 3,
+        "total": 4
+      },
+      "Analogical": {
+        "correct": 3,
+        "total": 3
+      },
+      "Negated": {
+        "correct": 8,
+        "total": 9
+      }
+    }
+  }
+]

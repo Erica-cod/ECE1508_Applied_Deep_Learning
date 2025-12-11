@@ -69,6 +69,11 @@ def parse_args():
         help="Path to Recipe-MPR dataset (default: data/500QA.json)",
     )
     parser.add_argument(
+        "--use-test-split",
+        action="store_true",
+        help="Use test split from training (reads test_split.json from model directory)",
+    )
+    parser.add_argument(
         "--max-length",
         type=int,
         default=512,
@@ -112,15 +117,21 @@ def parse_args():
     return args
 
 
-def load_dataset(dataset_path: Path) -> List[Dict]:
-    """Load Recipe-MPR dataset."""
+def load_dataset(dataset_path: Path, test_indices: List[int] = None) -> List[Dict]:
+    """Load Recipe-MPR dataset, optionally filtering to test split only."""
     if not dataset_path.exists():
         raise FileNotFoundError(f"Dataset not found: {dataset_path}")
 
     with open(dataset_path, "r", encoding="utf-8") as f:
         data = json.load(f)
 
-    logger.info(f"Loaded {len(data)} examples from {dataset_path}")
+    if test_indices is not None:
+        # Filter to test split only
+        data = [data[i] for i in test_indices]
+        logger.info(f"Loaded {len(data)} test examples from {dataset_path}")
+    else:
+        logger.info(f"Loaded {len(data)} examples from {dataset_path}")
+
     return data
 
 
@@ -396,8 +407,24 @@ def main():
 
     logger.info(f"Model loaded on device: {model.device}")
 
+    # Load test split info if requested
+    test_indices = None
+    if args.use_test_split:
+        test_split_path = args.model_path / "test_split.json"
+        if not test_split_path.exists():
+            raise FileNotFoundError(
+                f"Test split file not found: {test_split_path}\n"
+                "Train the model first with the updated training script."
+            )
+        with open(test_split_path, "r") as f:
+            test_split_info = json.load(f)
+        test_indices = test_split_info["test_indices"]
+        logger.info(f"Using test split with {len(test_indices)} examples")
+        logger.info(f"Split info: train={test_split_info['train_size']}, "
+                   f"val={test_split_info['val_size']}, test={test_split_info['test_size']}")
+
     # Load dataset
-    dataset = load_dataset(args.dataset_path)
+    dataset = load_dataset(args.dataset_path, test_indices)
 
     # Evaluate
     metrics, predictions = evaluate_model(model, tokenizer, dataset, args)

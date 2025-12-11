@@ -1,0 +1,500 @@
+{"query": "I want to make a warm dish containing oysters", "pred_id": "08cb462fdf", "gold_id": "08cb462fdf"}
+{"query": "Can I have a recipe for fish that's roasted?", "pred_id": "069aa1f8af", "gold_id": "069aa1f8af"}
+{"query": "What are recipes for fish, but not baked in the oven?", "pred_id": "6b86ecbde2", "gold_id": "3536b10328"}
+{"query": " I would like a shrimp recipe and I'm trying to eat a balanced diet", "pred_id": "00a39a8659", "gold_id": "00a39a8659"}
+{"query": "Can I have a shrimp pasta recipe for someone with low spice tolerance?", "pred_id": "3c9d5c4033", "gold_id": "3c9d5c4033"}
+{"query": "I want to make a paella but I'm short on time", "pred_id": "16b9c1be6b", "gold_id": "16b9c1be6b"}
+{"query": "What's a lobster recipe without too many ingredients?", "pred_id": "04d0db2c29", "gold_id": "54ea91646e"}
+{"query": "Can I have a recipe for clam chowder that isn't too fat?", "pred_id": "a300a4eef9", "gold_id": "27f025fa6d"}
+{"query": "I would like a beef recipe but not stew", "pred_id": "0204a7132f", "gold_id": "00a8910212"}
+{"query": "May I have a chicken recipe that contains bacon?", "pred_id": "4fa20f8ff7", "gold_id": "4fa20f8ff7"}
+{"query": "I want chicken that has a kick to it", "pred_id": "3b3fc7998f", "gold_id": "111cc465a9"}
+{"query": "I like eating pulled meats, but not beef or chicken", "pred_id": "5b879fbf2c", "gold_id": "0120f8d20c"}
+{"query": "Ways to cook lamb with fragrant seasoning", "pred_id": "01106228e0", "gold_id": "01106228e0"}
+{"query": "I want a meat dish suitable for date night", "pred_id": "02e982ec87", "gold_id": "8d7ad3988d"}
+{"query": "I want some crispy chicken like what I could get at KFC", "pred_id": "1746e9746c", "gold_id": "3e5eddf42b"}
+{"query": "I want a dish with meat and I don't like vegetables", "pred_id": "7fb61556f5", "gold_id": "01e71eeecf"}
+{"query": "Can I have a recipe for barbecue meat, but not seafood?", "pred_id": "88a83339ed", "gold_id": "88a83339ed"}
+{"query": "What is a sausage recipe for someone new to cooking?", "pred_id": "6ffdb18909", "gold_id": "6ffdb18909"}
+{"query": "I would like meat lasagna but I'm watching my weight", "pred_id": "0b82f37488", "gold_id": "0b82f37488"}
+{"query": "I want to make a sauce that goes with my ham", "pred_id": "16c4e3d135", "gold_id": "16c4e3d135"}
+{"query": "Can I have a meatball recipe that doesn't take too long?", "pred_id": "a6eed6bf5d", "gold_id": "a6eed6bf5d"}
+{"query": "I have leftover ground pork and I want to make Asian food", "pred_id": "0115f36655", "gold_id": "0cf4cdf6ea"}
+{"query": "What beef recipe can I make if I like spicy food?", "pred_id": "01a1c47a85", "gold_id": "01a1c47a85"}
+{"query": "Bacon breakfast recipe for beginners", "pred_id": "0c52081cd3", "gold_id": "972a21c205"}
+{"query": "Can I have a recipe containing ground pork and beef?", "pred_id": "a90458c7f2", "gold_id": "235b956f22"}
+{"query": "I miss my mom's noodle soup, is there a recipe for that?", "pred_id": "a2bbc573ae", "gold_id": "a2bbc573ae"}
+{"query": "What can I do with a leftover loaf of bread?", "pred_id": "0eed631d22", "gold_id": "641b2a86c5"}
+{"query": "What's a filling rice dish I can make?", "pred_id": "23e1dfbc6e", "gold_id": "598c6d6fbe"}
+{"query": "Can I have noodles but not Italian?", "pred_id": "a5f16ebf9c", "gold_id": "450940e6f6"}
+{"query": "I want to cook noodles in a wok", "pred_id": "4c73c1b483", "gold_id": "4c73c1b483"}
+{"query": "How do I make garlic bread that's cheesy?", "pred_id": "a329bbac19", "gold_id": "04b2c46e16"}
+{"query": "What are some recipes for this cold day that contain canned beans?", "pred_id": "82f40d6155", "gold_id": "72ba593c67"}
+{"query": "Teach me how to make European-style pastries", "pred_id": "094b3a58c1", "gold_id": "094b3a58c1"}
+{"query": "I'm really craving seafood spaghetti, can I have a recipe for that?", "pred_id": "25692e4d25", "gold_id": "12edb03fe6"}
+{"query": "Give me some bread recipes that are low in fat", "pred_id": "13b6da8de5", "gold_id": "07cd7f5e89"}
+{"query": "What's a pasta recipe that doesn't contain meat?", "pred_id": "86d3a285d6", "gold_id": "17b2d0f5dd"}
+{"query": "How to make rice in a pan?", "pred_id": "05e82b521d", "gold_id": "7a667996c6"}
+{"query": "What's a low-difficulty potato recipe?", "pred_id": "890a7d286d", "gold_id": "890a7d286d"}
+{"query": "What are some recipes containing corn that aren't too fat?", "pred_id": "146a7550f1", "gold_id": "146a7550f1"}
+{"query": "I would like lunch recipes with beans but not spicy", "pred_id": "8a5157452f", "gold_id": "6fa54bdfc9"}
+{"query": "I want to make a dessert with my brown rice", "pred_id": "08fdc46cc5", "gold_id": "8d803443b6"}
+{"query": "I want to make fries but I don't have normal potatoes", "pred_id": "7e6767b6c2", "gold_id": "238c577d4f"}
+{"query": "What are ways to cook asparagus if I don't have an oven at home?", "pred_id": "63e01fc241", "gold_id": "63e01fc241"}
+{"query": "What's a broccoli recipe that kids will like?", "pred_id": "066bbbef87", "gold_id": "772e8338e9"}
+{"query": "Can I have a brussel sprouts recipe with common ingredients?", "pred_id": "2ecb1ba42f", "gold_id": "2ecb1ba42f"}
+{"query": "I want a hearty dish that has carrots", "pred_id": "035dc3147f", "gold_id": "035dc3147f"}
+{"query": "I want a salad that has both vegetables and protein", "pred_id": "5e6dafa0ea", "gold_id": "0c3c851639"}
+{"query": "I would like a comforting recipe with mushrooms for a cold day", "pred_id": "7a6ee284ac", "gold_id": "7a6ee284ac"}
+{"query": "Can I have cauliflower bites like the ones from Boston Pizza?", "pred_id": "8a5766099b", "gold_id": "8a5766099b"}
+{"query": "How do I cook a zucchini in the oven?", "pred_id": "06e0f3189a", "gold_id": "06e0f3189a"}
+{"query": "I would like a salad but I don't like kale", "pred_id": "9960e6004b", "gold_id": "2a20a55940"}
+{"query": "I want to make vegetable soup but I don't have much time", "pred_id": "73a760ed43", "gold_id": "73a760ed43"}
+{"query": "I'd like a cucumber recipe where the cucumbers aren't cooked", "pred_id": "4fa6519618", "gold_id": "081167be43"}
+{"query": "I want a dip with vegetables to go with my tortilla chips for snack", "pred_id": "5b45c39e98", "gold_id": "9e0fb34c51"}
+{"query": "I want a green smoothie to have after my workout", "pred_id": "88504d478f", "gold_id": "44ed2cb069"}
+{"query": "What are some spinach or kale-based dishes I can make in the oven?", "pred_id": "a867087aa9", "gold_id": "083eac09aa"}
+{"query": "Can I have a recipe with green peppers and meat?", "pred_id": "16c58e5bab", "gold_id": "7f74a91404"}
+{"query": "I want vegetables for a breakfast meal", "pred_id": "a14c13fe97", "gold_id": "0c057e237d"}
+{"query": "I would like a tomato recipe that isn't soup", "pred_id": "00e237d00f", "gold_id": "02366fe956"}
+{"query": "How do I cook green beans in the oven?", "pred_id": "05e0b32f18", "gold_id": "05e0b32f18"}
+{"query": "I want a creamy pasta", "pred_id": "2f3b2c8ebb", "gold_id": "2f3b2c8ebb"}
+{"query": "What's a snack recipe containing cheddar cheese?", "pred_id": "29fe68215c", "gold_id": "29fe68215c"}
+{"query": "How do I make cream puffs that don't have too many calories?", "pred_id": "3a31aa6e93", "gold_id": "3a31aa6e93"}
+{"query": "Recipe for a dessert with cream cheese in it", "pred_id": "06f254d36f", "gold_id": "06f254d36f"}
+{"query": "What's a treat I can make for myself with milk during this heat wave?", "pred_id": "8d4c0d370f", "gold_id": "8d4c0d370f"}
+{"query": "I would like a recipe for salad with yogurt dressing", "pred_id": "1f4eed7165", "gold_id": "89d9703163"}
+{"query": "My favourite dessert is ice cream but I don't like fruity flavours", "pred_id": "302086796a", "gold_id": "7d09f98349"}
+{"query": "What can I make if I have butter and milk?", "pred_id": "04c6645a2a", "gold_id": "79282d7d4f"}
+{"query": "I want a cheesy dip for my afternoon snack", "pred_id": "62acf07751", "gold_id": "377e1d21bc"}
+{"query": "What's a noodle dish I can make with a creamy sauce?", "pred_id": "0e8daa6ac9", "gold_id": "80c8d2b109"}
+{"query": "What's a drink I can make containing chocolate?", "pred_id": "a088c4a1e6", "gold_id": "a088c4a1e6"}
+{"query": "Recipes for mac and cheese with multiple types of cheese", "pred_id": "68a14c1e6e", "gold_id": "68a14c1e6e"}
+{"query": "I would like a dessert that's creamy", "pred_id": "09adf6542e", "gold_id": "4c44c56408"}
+{"query": "How to easily make homemade yogurt?", "pred_id": "6f442a8313", "gold_id": "6f442a8313"}
+{"query": "Can I have a simple cheese pizza?", "pred_id": "01c0d100a5", "gold_id": "0d534fbf5e"}
+{"query": "I want to make cheesy finger foods for my party", "pred_id": "26845ab513", "gold_id": "26845ab513"}
+{"query": "How to make berry jam at home?", "pred_id": "019e385afa", "gold_id": "019e385afa"}
+{"query": "I have a lot of apples, what can I bake with them?", "pred_id": "05a6a7e8ef", "gold_id": "05a6a7e8ef"}
+{"query": "My family wants a recipe for peach cobbler that's healthier", "pred_id": "019f60c787", "gold_id": "019f60c787"}
+{"query": "What can I make with frozen berries that's not a drink?", "pred_id": "31ac8d0963", "gold_id": "31ac8d0963"}
+{"query": "I want a tropical fruit drink that reminds me of Hawaii", "pred_id": "455843a829", "gold_id": "363f094ec6"}
+{"query": "I would like to make either apple or cherry pie for dessert", "pred_id": "06c7af9340", "gold_id": "06c7af9340"}
+{"query": "Could I have a fruit salad containing a variety of fruits?", "pred_id": "5c9603605f", "gold_id": "5c9603605f"}
+{"query": "Give me a fruit cake recipe but I'm allergic to pineapple", "pred_id": "9dc0cc4b9f", "gold_id": "8369589e5b"}
+{"query": "What are some fruit smoothie recipes that don't contain dairy?", "pred_id": "7b176958fa", "gold_id": "7881dfd5df"}
+{"query": "I would like some strawberry breakfast recipes", "pred_id": "75e0698d4d", "gold_id": "75e0698d4d"}
+{"query": "Can I have a banana bread recipe that contains nuts?", "pred_id": "9cbb92b844", "gold_id": "9cbb92b844"}
+{"query": "Can I have a creamy fruit salad without kiwi?", "pred_id": "8e0b46be62", "gold_id": "3506b312a0"}
+{"query": "I'd like to make a classic French fruit tart but I don't like raspberries", "pred_id": "37c25acd41", "gold_id": "37c25acd41"}
+{"query": "I would like to make a pear cake for dessert but I'm a beginner at baking", "pred_id": "6d2bfd8462", "gold_id": "6d2bfd8462"}
+{"query": "Recipes for lemon cake like the ones from Starbucks", "pred_id": "3ad9a1d054", "gold_id": "1cf8751733"}
+{"query": "Give me some pineapple recipes that aren't dessert", "pred_id": "092b210aad", "gold_id": "2f0642b8b6"}
+{"query": "I would like a lunch dish that's spicy", "pred_id": "04baffc392", "gold_id": "035e92db22"}
+{"query": "I'm craving something sweet and sour, what can I make?", "pred_id": "0cea936271", "gold_id": "0cea936271"}
+{"query": "Show me a recipe for savoury crepes", "pred_id": "4b5adfc2f1", "gold_id": "4b5adfc2f1"}
+{"query": "I want to make something warm with chili peppers", "pred_id": "52eda14efa", "gold_id": "52eda14efa"}
+{"query": "I want a snack that's sweet like candy", "pred_id": "0e5dce2de8", "gold_id": "0e5dce2de8"}
+{"query": "Can I have a tangy summer drink?", "pred_id": "1776c5b520", "gold_id": "1776c5b520"}
+{"query": "What's a recipe for soup that's sweet?", "pred_id": "562934022c", "gold_id": "080c32addb"}
+{"query": "Can I have something chocolate-hazelnut flavoured for breakfast?", "pred_id": "2a8997d17f", "gold_id": "2a8997d17f"}
+{"query": "I miss the local dessert I had near the Nile River", "pred_id": "98d117ed45", "gold_id": "98d117ed45"}
+{"query": "I'm from Capetown and I want to introduce my vegetarian friend to cuisine from my country", "pred_id": "6010de609e", "gold_id": "7f9e7ce033"}
+{"query": "I'm a Kenyan long distance runner and I want a main dish full of protein from my hometown", "pred_id": "85fd7fec9a", "gold_id": "a2fd0e7edc"}
+{"query": "I want to try something warm to drink from West Africa", "pred_id": "9fdc30431d", "gold_id": "9fdc30431d"}
+{"query": "I want to make poutine that has meat in it", "pred_id": "5c0694bd66", "gold_id": "6aeb5140ab"}
+{"query": "I'm looking for a vegan burger without tofu", "pred_id": "833990105f", "gold_id": "00baec31c9"}
+{"query": "Is there a filling Canadian main course that's not poutine", "pred_id": "16b48ecd6b", "gold_id": "1de78125c6"}
+{"query": "How can I eat caviar with crackers?", "pred_id": "739a467c9e", "gold_id": "739a467c9e"}
+{"query": "I want healthy Mexican food", "pred_id": "08c41efc14", "gold_id": "099ae0fa87"}
+{"query": "I miss my mom's homemade Acadian dessert", "pred_id": "6552ee872e", "gold_id": "6552ee872e"}
+{"query": "I want something similar to Chipotle and also healthy", "pred_id": "25e93f32e1", "gold_id": "25e93f32e1"}
+{"query": "I want to make a healthy guacamole", "pred_id": "183273736c", "gold_id": "183273736c"}
+{"query": "I want kebabs that are easy on the stomach", "pred_id": "0e29809831", "gold_id": "0047cc5fcd"}
+{"query": "Can I have halal American snacks", "pred_id": "81422b128f", "gold_id": "81422b128f"}
+{"query": "I want to use up the corn in my fridge for a warm dish", "pred_id": "724772d056", "gold_id": "0302a9c63c"}
+{"query": "My cousins are vegetarian and they are coming over for mexican food night", "pred_id": "81db102972", "gold_id": "81db102972"}
+{"query": "Make chili that's not spicy", "pred_id": "0f52af8d09", "gold_id": "0f52af8d09"}
+{"query": "I want to make popeyes style chicken at home", "pred_id": "3e51152920", "gold_id": "3e51152920"}
+{"query": "Can I have some cheap junk food?", "pred_id": "168c263bc9", "gold_id": "0a1ce6cce0"}
+{"query": "I want some filling American food", "pred_id": "9e4dfd210d", "gold_id": "342a8d609a"}
+{"query": "How do I make a banana split ice cream dessert for my kids?", "pred_id": "4a13c4e253", "gold_id": "4a13c4e253"}
+{"query": "I want to make a fancy grilled fish entree", "pred_id": "8bd350c9e8", "gold_id": "1e5c94f511"}
+{"query": "I want something like a big mac combo meal that I could get at McDonalds", "pred_id": "9e4dfd210d", "gold_id": "8061de698c"}
+{"query": "How to make loaded potato salad without sour cream?", "pred_id": "76eec2f82e", "gold_id": "2b6946a387"}
+{"query": "How to make vegan poke at home?", "pred_id": "854cb8ffca", "gold_id": "99a5d0c3d0"}
+{"query": "I want to make fries like the ones in McDonalds", "pred_id": "32ed4d74f6", "gold_id": "32ed4d74f6"}
+{"query": "How to make pizza like the ones at Boston Pizza?", "pred_id": "64e2e44725", "gold_id": "64e2e44725"}
+{"query": "I want to make a lunch I can bring to school from leftover Thanksgiving turkey", "pred_id": "0ec1ad1d3f", "gold_id": "7d71c4a5df"}
+{"query": "What chili can I make if I'm vegan and don't want beans?", "pred_id": "49d5ab2765", "gold_id": "2f55089d6c"}
+{"query": "I want to make butterbeer from Harry Potter that's also healthy", "pred_id": "8b2ed7d09d", "gold_id": "8b2ed7d09d"}
+{"query": "I love cookies but most recipes out there are too unhealthy for my liking", "pred_id": "a2efa3fa05", "gold_id": "a2efa3fa05"}
+{"query": "I want to make a sandwich at home similar to the ones from Subway", "pred_id": "88510b467f", "gold_id": "88510b467f"}
+{"query": "I want to start a lemon drink stand in my backyard to earn some money this summer", "pred_id": "01b07dda40", "gold_id": "01b07dda40"}
+{"query": "I want to eat pizza but I'm watching my weight", "pred_id": "27c6a03010", "gold_id": "27c6a03010"}
+{"query": "I want to make Caribbean cuisine for my kid so she can grow better", "pred_id": "39d7f38487", "gold_id": "30ff2e9db5"}
+{"query": "I want to make a Peruvian dessert for my dinner guests", "pred_id": "04e65201a3", "gold_id": "04e65201a3"}
+{"query": "I want dessert with dulce de leche for a hot summer day", "pred_id": "38e7486d1a", "gold_id": "6e1438b7be"}
+{"query": "I want to try churros but I'm not a fan of cinnamon", "pred_id": "29f0ef8157", "gold_id": "29f0ef8157"}
+{"query": "I have a gluten allergy and I want to have dim sum for breakfast", "pred_id": "24f6103ce4", "gold_id": "1abc1641cf"}
+{"query": "I want to make Chinese stir fry but I ran out of soy sauce", "pred_id": "59cb818e23", "gold_id": "1d51eaf661"}
+{"query": "Could I have some sweet dim sum?", "pred_id": "8633236dbd", "gold_id": "8be6b7fc04"}
+{"query": "How do I make halal Chinese fried noodle?", "pred_id": "796d4b418e", "gold_id": "6acd3af717"}
+{"query": "I want to make a Chinese dessert with custard", "pred_id": "28d60dd8d2", "gold_id": "28d60dd8d2"}
+{"query": "I want to make an Asian dish with pork and rice", "pred_id": "a14ef82f62", "gold_id": "2bcaa46e02"}
+{"query": "I want to cook some Asian comfort food but I'm sick of eating beef", "pred_id": "6b54d3af6f", "gold_id": "1544d858d3"}
+{"query": "I'm from Beijing and I want a meat dish from my country", "pred_id": "55bd249a65", "gold_id": "4abc458244"}
+{"query": "How do I cook the simplest stir fry with eggs and tomatoes?", "pred_id": "71b3666924", "gold_id": "72963b3928"}
+{"query": "Can I make an Asian dessert using red bean?", "pred_id": "1b788fae39", "gold_id": "a5c681c4c9"}
+{"query": "I want some savory Chinese festival food", "pred_id": "0b1e5daa3f", "gold_id": "12fd743918"}
+{"query": "I want to make a chinese dish with meat but not chicken or beef", "pred_id": "70e63cadd9", "gold_id": "1544d858d3"}
+{"query": "I want to prepare a Korean-style hot pot at home", "pred_id": "7b72caae72", "gold_id": "7b72caae72"}
+{"query": "I'm on a diet and I'm craving dandan noodles", "pred_id": "62f88ac2c2", "gold_id": "62f88ac2c2"}
+{"query": "I want to make a halal stir-fried Chinese dish", "pred_id": "5424d7d703", "gold_id": "81f1929ff2"}
+{"query": "I want to make a well-known Chinese chicken dish", "pred_id": "6b29d0d777", "gold_id": "06dddda4ee"}
+{"query": "I want to make spicy korean soup", "pred_id": "4930046f48", "gold_id": "4930046f48"}
+{"query": "I want to cook something chinese but chinese cuisine largely consists of oily dishes, which I don't like", "pred_id": "59384af83b", "gold_id": "1903458afc"}
+{"query": "I want to try making some vegan Japanese desserts", "pred_id": "611a6fcc2b", "gold_id": "7f1ec174c7"}
+{"query": "I want to pack a savory Japanese lunch for my boyfriend", "pred_id": "9aac2b3bd0", "gold_id": "9aac2b3bd0"}
+{"query": "Could I have a recipe for Japanese seafood noodles?", "pred_id": "6ee5f79460", "gold_id": "6491f56289"}
+{"query": "I want a japanese dish with no carbs", "pred_id": "5492eb7651", "gold_id": "7b9dcab9e6"}
+{"query": "I want vegan sushi", "pred_id": "5932a8a20c", "gold_id": "171ef0df45"}
+{"query": "Could I make either red bean or green tea flavored Asian dessert?", "pred_id": "a5c681c4c9", "gold_id": "a5c681c4c9"}
+{"query": "I want to make a korean dish with no kimchi", "pred_id": "9797471b30", "gold_id": "4930046f48"}
+{"query": "I'm interested to try the rice cake soup that Koreans eat during the New Year", "pred_id": "4aee88a303", "gold_id": "77ffeae2b0"}
+{"query": "I want to cook a korean dish with seafood", "pred_id": "3f4238ec0c", "gold_id": "3f4238ec0c"}
+{"query": "I want to make a Japanese soup that doesn't contain seaweed", "pred_id": "8790ecfbd1", "gold_id": "56be46ad9b"}
+{"query": "I want a vegan asian dish that tastes like meat", "pred_id": "9540d5b87d", "gold_id": "188be1143b"}
+{"query": "I want curry but not indian or japanese", "pred_id": "725e80b8ca", "gold_id": "03c97249fc"}
+{"query": "I want an Indian dish that I can dip naan in", "pred_id": "7498a92b64", "gold_id": "188be1143b"}
+{"query": "I want to cook an Asian dish that can also be used as a sauce", "pred_id": "6b29d0d777", "gold_id": "188be1143b"}
+{"query": "I want to make pho but I ran out of meat", "pred_id": "78966eafdd", "gold_id": "a6db1f7569"}
+{"query": "I miss the egg tarts I had in Asia", "pred_id": "875bbfd3cf", "gold_id": "875bbfd3cf"}
+{"query": "I want to cook polish sausage with sauerkraut", "pred_id": "6ce90e9b04", "gold_id": "6ce90e9b04"}
+{"query": "I want cheap swiss food", "pred_id": "371c13a806", "gold_id": "371c13a806"}
+{"query": "I'm craving German snacks", "pred_id": "5f4f0e5750", "gold_id": "5f4f0e5750"}
+{"query": "It's a cold evening and I want German food", "pred_id": "69a8ff3d92", "gold_id": "69a8ff3d92"}
+{"query": "I want to make an italian snack", "pred_id": "1b696370fa", "gold_id": "1b696370fa"}
+{"query": "I want to make a soup from the Mediterranean", "pred_id": "07d9034669", "gold_id": "6cd574ada4"}
+{"query": "I want a French dish to go with a nice glass of red wine", "pred_id": "259e8c800c", "gold_id": "259e8c800c"}
+{"query": "I want to make paella for my spanish mother-in-law who is diabetic", "pred_id": "a6c5c1f5cb", "gold_id": "a6c5c1f5cb"}
+{"query": "I want a spanish dish that doesn't contain seafood", "pred_id": "8da6e83ff9", "gold_id": "10aeb060ef"}
+{"query": "How do I cook an Italian meatball soup?", "pred_id": "2c9474a993", "gold_id": "2c9474a993"}
+{"query": "I want to make an Italian vegan dish", "pred_id": "10b28435ba", "gold_id": "a8e28be186"}
+{"query": "I remember trying this traditional candy that tastes just like milk when I visited Moscow, can I have a recipe for that?", "pred_id": "10ada75a02", "gold_id": "10ada75a02"}
+{"query": "I'm on a diet but I still want fish and chips", "pred_id": "2379f4b9df", "gold_id": "2379f4b9df"}
+{"query": "I want to try making nordic dessert", "pred_id": "15c8484027", "gold_id": "15c8484027"}
+{"query": "I want to cook Greek cuisine but I forgot to buy cheese, tzatziki dip, or garlic", "pred_id": "1409eb0098", "gold_id": "17eff23365"}
+{"query": "How to make a vegan lasagna for dinner?", "pred_id": "0eebf3e4b4", "gold_id": "0eebf3e4b4"}
+{"query": "I want to make Italian food for my daughter who hates cheese", "pred_id": "526461104e", "gold_id": "0ab965336b"}
+{"query": "Today's really hot and I'm craving for a peach flavoured treat", "pred_id": "0bfe892509", "gold_id": "9b8014d02f"}
+{"query": "I want to cook pasta but not tortellini", "pred_id": "21f59c114a", "gold_id": "44bb127bc7"}
+{"query": "What is a hearty French dish I can make for dinner?", "pred_id": "02a044aea5", "gold_id": "02a044aea5"}
+{"query": "What French appetizers use wine?", "pred_id": "72e6203b52", "gold_id": "72e6203b52"}
+{"query": "I have some chocolate, what french dessert can I make with it?", "pred_id": "a1164b997e", "gold_id": "9ec29f06d6"}
+{"query": "For lunch, I want to cook a duck French-style", "pred_id": "a263b56ecf", "gold_id": "a263b56ecf"}
+{"query": "What can I make for a European-inspired breakfast?", "pred_id": "7b9badda2f", "gold_id": "7b9badda2f"}
+{"query": "I want to make a pizza baguette", "pred_id": "62b85165ed", "gold_id": "62b85165ed"}
+{"query": "What German entree can I make for dinner", "pred_id": "48539e5b5b", "gold_id": "48539e5b5b"}
+{"query": "I miss Australian damper", "pred_id": "0e6c029cfc", "gold_id": "a75e891193"}
+{"query": "I want to try making Fijian dessert", "pred_id": "7b6feef9a0", "gold_id": "7b6feef9a0"}
+{"query": "I want a drink with chocolate or cinnamon for a cosy night in", "pred_id": "3b4fbed7d5", "gold_id": "06653f1315"}
+{"query": "It's freezing and I'm a craving a thick soup", "pred_id": "05fb116338", "gold_id": "05a8d8f651"}
+{"query": "What are some snacks I can eat on the sofa without making a mess?", "pred_id": "5884624f69", "gold_id": "5884624f69"}
+{"query": "What can I make for dinner using winter vegetables?", "pred_id": "96b7375280", "gold_id": "96b7375280"}
+{"query": "I'm in the mood to make a unique dessert with a Christmas themed flavour", "pred_id": "50bc560bb8", "gold_id": "18c081007c"}
+{"query": "What are some refreshing drinks that are perfect for the hot summer?", "pred_id": "0ce6f6d989", "gold_id": "258820bc84"}
+{"query": "My kids want to use the new popsicle maker I bought", "pred_id": "42f3215618", "gold_id": "42f3215618"}
+{"query": "I read online that some healthy juices can improve your digestion, and I'd be interested to try them", "pred_id": "63ad58272f", "gold_id": "63ad58272f"}
+{"query": "What are some cocktails that can make me feel like I'm on an island vacation?", "pred_id": "0fbe9ce183", "gold_id": "0fbe9ce183"}
+{"query": "How do I make a slushie without artificial flavouring?", "pred_id": "22e9269352", "gold_id": "22e9269352"}
+{"query": "I want a nice warm drink or dessert with fall spices", "pred_id": "09accc920a", "gold_id": "09accc920a"}
+{"query": "What are the best fall inspired pastries and baked goods?", "pred_id": "0138cdb839", "gold_id": "0138cdb839"}
+{"query": "What are some fermented vegetables I can make to store during the winter?", "pred_id": "0fec5cb3b3", "gold_id": "0fec5cb3b3"}
+{"query": "I want a savoury snack after school, but I can't be too full because I'll be eating dinner soon", "pred_id": "4803070f9d", "gold_id": "4803070f9d"}
+{"query": "I pack my lunch for school every day but I hate the hassle of bringing multiple containers", "pred_id": "16edfc5b7b", "gold_id": "85ea5bf974"}
+{"query": "I want to pack a sandwich to school but I hate it when the bread gets soggy", "pred_id": "695bee3da8", "gold_id": "695bee3da8"}
+{"query": "I'm in a rush to go to school this morning, what should I make?", "pred_id": "0a77dac796", "gold_id": "7d59b6d82f"}
+{"query": "I need breakfast but I have no cooking experience", "pred_id": "0a77dac796", "gold_id": "7d59b6d82f"}
+{"query": "What's something that I can just warm up the next morning?", "pred_id": "34f3bc7c61", "gold_id": "34f3bc7c61"}
+{"query": "Can I have some Japanese lunch box ideas?", "pred_id": "8e45cb07c2", "gold_id": "5570b46221"}
+{"query": "What are some meals I can keep in the freezer for a week?", "pred_id": "88bc5ec028", "gold_id": "88bc5ec028"}
+{"query": "I want a nutritious meal to be in good shape for a marathon", "pred_id": "05fb116338", "gold_id": "05fb116338"}
+{"query": "Any ideas for a brunch that is easy to make in my dormitory kitchen?", "pred_id": "8abf5e0868", "gold_id": "8abf5e0868"}
+{"query": "What's the most simple meal I can make using just a rice cooker?", "pred_id": "113ce8f9b1", "gold_id": "1cd635a823"}
+{"query": "My roommate only eats western food and I'm about to cook dinner for the two of us", "pred_id": "035e1bea0d", "gold_id": "0b40853fcb"}
+{"query": "I want a casserole recipe with minimal hassle - my fridge is almost empty and I'm too lazy to go grocery shopping", "pred_id": "a2f647d688", "gold_id": "1443c69124"}
+{"query": "What's a good lunch I can warm up in the microwave at my office?", "pred_id": "0bf4540f77", "gold_id": "035e1bea0d"}
+{"query": "I want to eat lunch at my office desk but I'm worried that the smell of my food will affect my colleagues", "pred_id": "85ea5bf974", "gold_id": "85ea5bf974"}
+{"query": "I hate it when my sandwiches make a huge mess after eating it", "pred_id": "85ea5bf974", "gold_id": "85ea5bf974"}
+{"query": "I need to prepare a traditional Valentine's main course for my significant other.", "pred_id": "05393bf4a0", "gold_id": "05393bf4a0"}
+{"query": "I want to make those easter chocolate creme eggs at home", "pred_id": "4a7333d3be", "gold_id": "4a7333d3be"}
+{"query": "I want to prepare a chocolate fountain for the kids to eat strawberries with", "pred_id": "4c12519b2b", "gold_id": "0981de04fa"}
+{"query": "I'm looking for pretty macarons that match the Easter pastel colour theme", "pred_id": "63795f7216", "gold_id": "63795f7216"}
+{"query": "I'm looking to host a traditional British-style Sunday roast in my backyard this weekend", "pred_id": "9a38eae6b1", "gold_id": "9a38eae6b1"}
+{"query": "Any ideas for dye-free green desserts for St Patrick's day?", "pred_id": "5f2135cbd5", "gold_id": "0467ff1e38"}
+{"query": "I'm looking for decorative treats for my Halloween party", "pred_id": "5f2135cbd5", "gold_id": "2a63214ef9"}
+{"query": "I have way too many leftover chocolate candy bars from Halloween and I want to make a dessert", "pred_id": "0bf6f6c3a2", "gold_id": "0bf6f6c3a2"}
+{"query": "I just need to prepare traditional Thanksgiving poultry, with no frills or anything too difficult", "pred_id": "2e5385b157", "gold_id": "2e5385b157"}
+{"query": "My grandma is coming over for Thanksgiving dinner and I remember from last year that she hates cranberry sauce", "pred_id": "0f973a357b", "gold_id": "0a64575cbe"}
+{"query": "I'm craving something with gingerbread - like cookies or tarts!", "pred_id": "0a6eb02879", "gold_id": "0a6eb02879"}
+{"query": "I'm looking for a Christmas themed snack that will keep the kids busy and out of my way", "pred_id": "005f5336e6", "gold_id": "2ec7dacd1b"}
+{"query": "I'm looking for a hearty Christmas dinner perfect for a family reunion", "pred_id": "72c618983e", "gold_id": "72c618983e"}
+{"query": "I think baking and decorating Christmas cookies this weekend sounds like a fun idea", "pred_id": "72ece74720", "gold_id": "0a6eb02879"}
+{"query": "This year, I want to make standard Christmas candies", "pred_id": "50c1df46ac", "gold_id": "328f699550"}
+{"query": "Any traditional hotpot ideas for the Chinese new year?", "pred_id": "56c08f5841", "gold_id": "56c08f5841"}
+{"query": "What should I make to treat my parents for the new year? They aren't familiar with anything not American or European so I want to lean towards something safe", "pred_id": "06a53b0796", "gold_id": "0786a6d1e5"}
+{"query": "What are some traditional Chinese new year dishes?", "pred_id": "40427cc1bc", "gold_id": "40427cc1bc"}
+{"query": "I want a meal to eat before dawn in Ramadan", "pred_id": "3f490b40d3", "gold_id": "248ec29976"}
+{"query": "I want to bake some colourful cookies to celebrate pride month", "pred_id": "72ece74720", "gold_id": "17a59fead4"}
+{"query": "I need to prepare a passionfruit punch bowl, although I don't think I'm able to find actual passionfruits in supermarkets near me", "pred_id": "9865b93ea8", "gold_id": "3dc2282f6a"}
+{"query": "What's a good way to make jello shots with a bottle of Chandon?", "pred_id": "66627b96b7", "gold_id": "66627b96b7"}
+{"query": "I told my high school friends that I would be bringing a meat dish to the reunion potluck.", "pred_id": "8000a7b666", "gold_id": "a0d64772d7"}
+{"query": "I need to prepare some fancy finger food for the house party I'm hosting for my colleagues this weekend", "pred_id": "a09c299a23", "gold_id": "a09c299a23"}
+{"query": "My brother's birthday is coming up but he is picky and only likes the most traditional birthday cake", "pred_id": "51bb72fe5b", "gold_id": "51bb72fe5b"}
+{"query": "My daughter told me she wants a cake with lots of cream for her birthday, but my oven is broken - what should I do?", "pred_id": "902fe21ebf", "gold_id": "902fe21ebf"}
+{"query": "My toddler's birthday party is next week and I want to prepare a fried snack that all his friends will love", "pred_id": "0a91f2c61f", "gold_id": "011e2f2bd4"}
+{"query": "What are some interesting cake ideas for a baby boy gender reveal?", "pred_id": "5f2135cbd5", "gold_id": "7cd0e87004"}
+{"query": "My friends are coming over to watch a football game and I want to bake a filling appetizer", "pred_id": "37e3caaf1d", "gold_id": "37e3caaf1d"}
+{"query": "I want to bake something sweet for my grandma's birthday", "pred_id": "16ed782fd9", "gold_id": "16ed782fd9"}
+{"query": "My best friend called and asked me if I could prepare something sweet for her bridal shower brunch", "pred_id": "8abf5e0868", "gold_id": "8abf5e0868"}
+{"query": "I'm going to a cocktail party where they will host a competition for the guests to see who can make the prettiest drink.", "pred_id": "0976c7616e", "gold_id": "8f83d9114b"}
+{"query": "What pasta goes well with white wine?", "pred_id": "595efead77", "gold_id": "595efead77"}
+{"query": "I want to avoid getting bloated so I can look good in my prom dress later, what should I eat for lunch?", "pred_id": "2893433e67", "gold_id": "128334eec1"}
+{"query": "I heard eating at night makes you gain weight, but I need something to eat even if it is really light", "pred_id": "7d59b6d82f", "gold_id": "9ef9149d8a"}
+{"query": "I'm severely hungover and need to eat something solid, but I feel like I will throw up if the food is too greasy or soft", "pred_id": "0b88ab2aac", "gold_id": "0b88ab2aac"}
+{"query": "What's a good hangover soup recipe?", "pred_id": "0613974a96", "gold_id": "32020b66f5"}
+{"query": "What snacks should I have after cardio to avoid bulking?", "pred_id": "117a4f45f2", "gold_id": "04a11045e3"}
+{"query": "I'm trying to increase my protein intake but cut down on my fat intake to get leaner", "pred_id": "05823563d4", "gold_id": "242210dfad"}
+{"query": "I need a healthy preworkout snack and I can't be too full", "pred_id": "1c2ce335be", "gold_id": "1c2ce335be"}
+{"query": "What are some meals I could have after high intensity exercise for muscle gain?", "pred_id": "242210dfad", "gold_id": "242210dfad"}
+{"query": "What meat dishes I can make using a campfire?", "pred_id": "8ca3151f1e", "gold_id": "5e1874bd17"}
+{"query": "I'm going camping, so I need a recipe such that its ingredients won't spoil when kept in room temperature for three days.", "pred_id": "8ca3151f1e", "gold_id": "8ca3151f1e"}
+{"query": "Any ideas for a s'mores recipes, but with a small twist?", "pred_id": "5943cb5176", "gold_id": "2423a84803"}
+{"query": "I'm going on a picnic, what's something I can make with all healthy ingredients?", "pred_id": "04a11045e3", "gold_id": "04a11045e3"}
+{"query": "I want to prepare a charcuterie board with cold cut meat for a picnic.", "pred_id": "4d52469916", "gold_id": "8fe9bb47c9"}
+{"query": "I thought that preparing something on skewers would be a fun idea for a backyard barbeque.", "pred_id": "9f4f1bcc6a", "gold_id": "044a8c1b8b"}
+{"query": "How do I make barbequed ribs using Tabasco?", "pred_id": "121f9abff5", "gold_id": "121f9abff5"}
+{"query": "What side dishes can I barbeque along with the other main meat dish?", "pred_id": "121f9abff5", "gold_id": "01905a64b0"}
+{"query": "What are some lightweight and healthy snacks to bring on a backpacking trip?", "pred_id": "9ef9149d8a", "gold_id": "9ef9149d8a"}
+{"query": "What are some desserts I can make for my dog?", "pred_id": "42eba59ba6", "gold_id": "42eba59ba6"}
+{"query": "I need to make food for my dog, but she's a bit sensitive to pesticides often found in commercially produced leafy vegetables", "pred_id": "5c6d5fc809", "gold_id": "5f11520acb"}
+{"query": "I need new menu items that are easy for takeout for my noodle restaurant", "pred_id": "a1c1096133", "gold_id": "a1c1096133"}
+{"query": "I want an interesting fusion dish that will be difficult to find at other restaurants in Toronto", "pred_id": "06d357effb", "gold_id": "77a6569fc1"}
+{"query": "I would like something cheap but I get hungry all the time", "pred_id": "035e1bea0d", "gold_id": "035e1bea0d"}
+{"query": "I need an easy meal under 10 dollars", "pred_id": "035e1bea0d", "gold_id": "035e1bea0d"}
+{"query": "What desserts can I have while on a budget?", "pred_id": "8cc3fbebb3", "gold_id": "8cc3fbebb3"}
+{"query": "I still have leftover white rice from last night and I want to cook lunch with it", "pred_id": "9aed66a073", "gold_id": "035e1bea0d"}
+{"query": "How do I spice up my instant noodles? I'm bored of following the plain recipe on the packaging", "pred_id": "16edfc5b7b", "gold_id": "78ebeb03f1"}
+{"query": "How can I make some tasty yet affordable meals for a dinner date?", "pred_id": "002a58ec3d", "gold_id": "002a58ec3d"}
+{"query": "I want to prepare enough dinner for my family but we really need to save money right now", "pred_id": "9a38eae6b1", "gold_id": "1cd635a823"}
+{"query": "What are some Asian street food I can make at home?", "pred_id": "7ba9c2b8d5", "gold_id": "7ba9c2b8d5"}
+{"query": "What can I make for breakfast using SPAM?", "pred_id": "1d7574ab8a", "gold_id": "1d7574ab8a"}
+{"query": "I want to cook a gourmet dish with seafood", "pred_id": "84b34437fb", "gold_id": "84b34437fb"}
+{"query": "I want foie gras served with a sweet condiment, jam, or sauce", "pred_id": "4d49a4e46f", "gold_id": "1399bb7faa"}
+{"query": "I don't know how to use caviar to make anything other than canapes - how do I use it in a main course?", "pred_id": "364c5eed10", "gold_id": "585feea316"}
+{"query": "My friend is bringing a bottle of champagne over, what should I make for dinner to go with it?", "pred_id": "29e400e3bc", "gold_id": "29e400e3bc"}
+{"query": "I want a pasta that doesn't taste cheap.", "pred_id": "14db1de478", "gold_id": "14db1de478"}
+{"query": "I need an entree that would impress my client, who is a CEO of a multinational company", "pred_id": "595efead77", "gold_id": "84b34437fb"}
+{"query": "I want an uncommon household dish that only uses the best ingredients", "pred_id": "06c853e7db", "gold_id": "84b34437fb"}
+{"query": "I want to emulate the fine dining experience at home with expensive seafood.", "pred_id": "84b34437fb", "gold_id": "84b34437fb"}
+{"query": "I'm looking for avocado based baby food", "pred_id": "1146eca54c", "gold_id": "1146eca54c"}
+{"query": "I want a baby food recipe that contains a variety of vitamins from natural sources, such as fruits", "pred_id": "1dd0628e05", "gold_id": "1dd0628e05"}
+{"query": "I'm looking for a way to introduce a source of greens into my kids' diets", "pred_id": "0ca3c462b7", "gold_id": "4937a89ad0"}
+{"query": "What foods should I prepare for my one year old to eat for lunch?", "pred_id": "47af66900e", "gold_id": "6c40c9e2aa"}
+{"query": "I want to make a sweet milkshake for the kids", "pred_id": "0bd950bcbd", "gold_id": "0bd950bcbd"}
+{"query": "What's a smoothie with plenty of fruits I can make for my kid's party?", "pred_id": "081424a0d7", "gold_id": "081424a0d7"}
+{"query": "Could I have a potato recipe for my baby who is teething?", "pred_id": "88761278df", "gold_id": "88761278df"}
+{"query": "It's summer and I wanted to make something sweet that will help me cool down", "pred_id": "0f56a80c6d", "gold_id": "0f56a80c6d"}
+{"query": "I want a healthy lunch dish", "pred_id": "7e32f3aab4", "gold_id": "7e32f3aab4"}
+{"query": "How to make noodles like Chinese takeaway?", "pred_id": "8f99fe76ba", "gold_id": "8f99fe76ba"}
+{"query": "I'm craving a snack that is fried, yet still somewhat healthy", "pred_id": "a1584a4251", "gold_id": "a1584a4251"}
+{"query": "I want to make chips that are healthier than regular potato chips", "pred_id": "12baddfccc", "gold_id": "12baddfccc"}
+{"query": "Surprise me with an unconventional vegan noodle recipe", "pred_id": "5570b46221", "gold_id": "5570b46221"}
+{"query": "Find me a pasta recipe for my vegan dinner guests", "pred_id": "0eebf3e4b4", "gold_id": "0eebf3e4b4"}
+{"query": "What snack can I eat if I just got braces?", "pred_id": "357d68289f", "gold_id": "3d32fbf542"}
+{"query": "I want to make use of the extra bottle of beer I have to bake some bread", "pred_id": "11dda06ada", "gold_id": "11dda06ada"}
+{"query": "I want a seafood soup recipe", "pred_id": "99d5c40821", "gold_id": "99d5c40821"}
+{"query": "Give me a Subway-style beef sandwich recipe", "pred_id": "88510b467f", "gold_id": "2d0fe1199e"}
+{"query": "Get me a dessert recipe that is digestion friendly", "pred_id": "284db04fbe", "gold_id": "284db04fbe"}
+{"query": "I need to prepare a meal for my friend who's diabetic", "pred_id": "242322a378", "gold_id": "242322a378"}
+{"query": "I want to prepare a healthy dinner for my grandparents", "pred_id": "1cc110d554", "gold_id": "1cc110d554"}
+{"query": "What snack can I bring to the hospital for my friend who just had an appendectomy?", "pred_id": "759e279a77", "gold_id": "759e279a77"}
+{"query": "I want to prepare a warm soup for my sick friend, and I need to consider the fact that he is vegan", "pred_id": "385be72e21", "gold_id": "81a85a9b8d"}
+{"query": "The chicken I brought is about to expire, and I want to use it in a soup", "pred_id": "385be72e21", "gold_id": "385be72e21"}
+{"query": "I'm recovering from a wisdom tooth extraction, give me something healthy to eat", "pred_id": "798f68676a", "gold_id": "9a70d96b46"}
+{"query": "I need to prepare a lunch to eat in the car after my training session at the gym", "pred_id": "2d9c3e3fe5", "gold_id": "2d9c3e3fe5"}
+{"query": "I'd like a dumpling recipe that contains an unconventional meat", "pred_id": "25da8fe85d", "gold_id": "25da8fe85d"}
+{"query": "My uncle who is a Buddhist monk is coming over for lunch and I have no idea what I should cook for him", "pred_id": "6fe7906cff", "gold_id": "458476b982"}
+{"query": "Do you have a Kosher meat recipe for Shabbat?", "pred_id": "2501f0f2ae", "gold_id": "826e30e428"}
+{"query": "Give me a halal salad recipe", "pred_id": "57139ff9fe", "gold_id": "57139ff9fe"}
+{"query": "Do you have some vegan friendly dinner ideas", "pred_id": "03687907f4", "gold_id": "03687907f4"}
+{"query": "I'm lacto-vegetarian and want a dish for dinner", "pred_id": "a8b91d1de4", "gold_id": "a8b91d1de4"}
+{"query": "What's a good cheesecake recipe if I'm considering going keto?", "pred_id": "6217b3e93d", "gold_id": "6217b3e93d"}
+{"query": "I want a soup that is vitamin rich and healthy", "pred_id": "0fc87c234c", "gold_id": "0fc87c234c"}
+{"query": "I'm on a paleo diet and want a breakfast I can grab and go", "pred_id": "2390529a80", "gold_id": "39bc46d7ce"}
+{"query": "I want to make a hearty paleo stew for my grandchildren", "pred_id": "1780edaf1d", "gold_id": "1780edaf1d"}
+{"query": "What's a good dinner recipe if I want to build up my muscles?", "pred_id": "920b949d45", "gold_id": "920b949d45"}
+{"query": "I want a recipe for something I can bake that's oil-free", "pred_id": "4defd0c67f", "gold_id": "4defd0c67f"}
+{"query": "I'm vegan but I miss eating steak", "pred_id": "803be1d5b3", "gold_id": "803be1d5b3"}
+{"query": "I want a keto dinner for weight loss", "pred_id": "14bd57315c", "gold_id": "006dbad7d9"}
+{"query": "I'm craving a nut flavoured ice cream, maybe something like white chocolate macadamia or peanut butter", "pred_id": "3545bb0e98", "gold_id": "0d58d5a016"}
+{"query": "I'm craving a light snack but I would prefer something salty over something sweet", "pred_id": "a4d86fa1b3", "gold_id": "a0da16690d"}
+{"query": "I want to eat spicy seafood but I am sick of Tom Yum", "pred_id": "99c1d16975", "gold_id": "99c1d16975"}
+{"query": "I ran out of flour but I promised my kids would bake them chocolate cake today", "pred_id": "15b107ce92", "gold_id": "06ad9392b9"}
+{"query": "How do I make a spicy soup with chicken?", "pred_id": "02735d8ac5", "gold_id": "74859e42d8"}
+{"query": "Give me a dairy-free milkshake recipe", "pred_id": "94985a56ba", "gold_id": "94985a56ba"}
+{"query": "I'm allergic to dairy but I really love ice cream", "pred_id": "538a69a398", "gold_id": "538a69a398"}
+{"query": "I'm allergic to eggs but want to make a cake", "pred_id": "88bea40028", "gold_id": "a02998e13a"}
+{"query": "What snack can I have if I am allergic to soy?", "pred_id": "1df267929e", "gold_id": "99a2ec51be"}
+{"query": "I need a breakfast that won't trigger my Celiac disease", "pred_id": "34c016f490", "gold_id": "34c016f490"}
+{"query": "I want to try sushi but I am not comfortable with eating raw fish", "pred_id": "0509b65958", "gold_id": "0509b65958"}
+{"query": "I want to make pancakes but most recipes out there contain wheat", "pred_id": "131af85fb8", "gold_id": "05406dce22"}
+{"query": "It is surprisingly difficult to find snacks that don't contain peanuts at the supermarket, so I think I'll have to resort to making my own", "pred_id": "957e9efc19", "gold_id": "1533bb2a92"}
+{"query": "I wanted to make myself a beef burger, similar to the one I had at Harvey's", "pred_id": "0b89896b7b", "gold_id": "0b89896b7b"}
+{"query": "Give me a sandwich recipe that's vegetarian", "pred_id": "0e55986ae4", "gold_id": "0e55986ae4"}
+{"query": "I'd love to have a milkshake but I'm lactose intolerant", "pred_id": "95c75334c2", "gold_id": "95c75334c2"}
+{"query": "I want have some diabetes friendly cookies", "pred_id": "8876a88802", "gold_id": "298e519f47"}
+{"query": "Do you have a cookie recipe that's good for someone with a nut allergy?", "pred_id": "44c99b3cf4", "gold_id": "44c99b3cf4"}
+{"query": "I want to make a weight loss friendly dessert", "pred_id": "421aafaa99", "gold_id": "8d1197f537"}
+{"query": "Do you have a breakfast recipe for people with dysphagia?", "pred_id": "03a44e60b7", "gold_id": "189945b6ab"}
+{"query": "I want some roasted vegetables", "pred_id": "4812e96cdb", "gold_id": "4812e96cdb"}
+{"query": "Give me a weight loss cabbage soup recipe", "pred_id": "20a3c99d0c", "gold_id": "20a3c99d0c"}
+{"query": "I want some mushy peas to go with my steak and kidney pie", "pred_id": "79158b0328", "gold_id": "88822955f2"}
+{"query": "I want a creamy pasta recipe that doesn't contain cheese", "pred_id": "5e1ab8f689", "gold_id": "267f2a13cb"}
+{"query": "I want a detox salad", "pred_id": "2d52df53ae", "gold_id": "038ca690f6"}
+{"query": "I want muffins for breakfast but I'm out of butter", "pred_id": "3b9743e2f7", "gold_id": "3b9743e2f7"}
+{"query": "Give me a low-glycemic dish for dinner", "pred_id": "6427ac518b", "gold_id": "6427ac518b"}
+{"query": "I want a salad made with all organic ingredients", "pred_id": "9261e1d685", "gold_id": "9261e1d685"}
+{"query": "I want a dinner recipe that's not too salty", "pred_id": "1b45b0c948", "gold_id": "1b45b0c948"}
+{"query": "I wanted to make something salty to season my pea soup", "pred_id": "222db9125c", "gold_id": "222db9125c"}
+{"query": "I want fast food but my doctor says I shouldn't eat too much salty foods", "pred_id": "8865cbafaa", "gold_id": "8865cbafaa"}
+{"query": "I want a diabetes friendly dessert", "pred_id": "88dbfc6049", "gold_id": "88dbfc6049"}
+{"query": "I want to cook a simple lunch but I'm trying to lose weight", "pred_id": "5431d56b75", "gold_id": "5431d56b75"}
+{"query": "I want healthy fast food for dinner", "pred_id": "59d92807e6", "gold_id": "3605f03f94"}
+{"query": "I want a vegetarian meal that still gets me the nutrients I would get with meat", "pred_id": "1c7cb30ebf", "gold_id": "7481d2a59b"}
+{"query": "I wanted to add some flavor to my homemade pizza", "pred_id": "3b4a85c8a4", "gold_id": "3b4a85c8a4"}
+{"query": "I want to make ribs but I don't have a grill", "pred_id": "6d142ffe3a", "gold_id": "9438b707a6"}
+{"query": "Can I have a recipe for grilled fish that's not tuna", "pred_id": "909be673a6", "gold_id": "1689dd7fd9"}
+{"query": "How do I make pan-fried noodles with seafood?", "pred_id": "47f26aeb7c", "gold_id": "47f26aeb7c"}
+{"query": "I want to bake a sweet lemon tart", "pred_id": "a838baef39", "gold_id": "a838baef39"}
+{"query": "Do you know how to cook bitter melon the Chinese way?", "pred_id": "5fb91f8f02", "gold_id": "5fb91f8f02"}
+{"query": "Give me a non-spicy hot pot recipe", "pred_id": "9c5be89ab9", "gold_id": "9c5be89ab9"}
+{"query": "Give me a recommendation for a drink people usually bring to the gym", "pred_id": "324c406768", "gold_id": "324c406768"}
+{"query": "I want a lunch I can eat cold", "pred_id": "832a8fdbf9", "gold_id": "51c55a401e"}
+{"query": "Can I have a recipe for fried seafood?", "pred_id": "7f9b44338a", "gold_id": "7f9b44338a"}
+{"query": "Do you have an idea for a vegetarian dish I can bring to a summer picnic?", "pred_id": "8f6e08bad4", "gold_id": "97831761b5"}
+{"query": "Is there anything I can drink if I have high blood pressure?", "pred_id": "0caba61123", "gold_id": "4e9897f093"}
+{"query": "I'm craving a hamburger with a juicy beef patty", "pred_id": "0d22436952", "gold_id": "0d22436952"}
+{"query": "Can you give me a post-workout recovery meal?", "pred_id": "0b581f2f5a", "gold_id": "0b581f2f5a"}
+{"query": "I'm craving Asian style meat pancakes", "pred_id": "5c0b92f270", "gold_id": "5c0b92f270"}
+{"query": "My father likes spicy food and I wanted to find a beef recipe that I could make for our family gathering this week", "pred_id": "4eb6107a1f", "gold_id": "3acdf64c3b"}
+{"query": "I want a soup that is a good for my bones since I have Osteoporosis", "pred_id": "39fdf87117", "gold_id": "39fdf87117"}
+{"query": "I want a salad rich with antioxidants", "pred_id": "21f1dcdcff", "gold_id": "349b73482f"}
+{"query": "I want cookies I can eat despite having a grain allergy", "pred_id": "691fb65c17", "gold_id": "691fb65c17"}
+{"query": "I want a beef stew with at least two different vegetables", "pred_id": "19377fae88", "gold_id": "19377fae88"}
+{"query": "I want to make dinner rolls with some extra flavour in it", "pred_id": "016c32e55a", "gold_id": "1aa15dee27"}
+{"query": "I have some extra milk and I want to use it for baking", "pred_id": "17964c7c95", "gold_id": "32acd68e7c"}
+{"query": "It's my cheat day today and I'm craving some junk food for dinner", "pred_id": "34e43ad759", "gold_id": "34e43ad759"}
+{"query": "I want a kebab that isn't meat", "pred_id": "790befb273", "gold_id": "0047cc5fcd"}
+{"query": "I'm craving an egg-based dessert", "pred_id": "581eb5fb1e", "gold_id": "581eb5fb1e"}
+{"query": "I have a vegan friend coming over to have dinner and I want to make an inclusive pasta recipe", "pred_id": "f6e3dba444", "gold_id": "f6e3dba444"}
+{"query": "I only have a pan to cook with, what lean dinner recipe can I make with chicken and vegetables?", "pred_id": "f468207199", "gold_id": "d99437555c"}
+{"query": "I had a long day at work, can I have a dinner recipe that isn't too hard to make?", "pred_id": "d6e5483250", "gold_id": "b09615b271"}
+{"query": "Can I have a steak recipe that's similar to what my Floridian friends would eat?", "pred_id": "08a5c2281b", "gold_id": "08a5c2281b"}
+{"query": "I've been following a diet, can I have a chicken dinner recipe with low calorie count and isn't basic?", "pred_id": "3f2732a025", "gold_id": "3f2732a025"}
+{"query": "I want a salmon fish recipe and I haven't tried cumin on salmon before, but I would like to", "pred_id": "82137e95b6", "gold_id": "82137e95b6"}
+{"query": "I want a meat lovers pasta recipe to make for dinner when hosting my American friends", "pred_id": "0462a7877c", "gold_id": "c2c437b958"}
+{"query": "I want a pasta recipe for dinner that is Greek instead of Italian for when it's hot outside and we don't want hot food", "pred_id": "0a0b40b45c", "gold_id": "0a0b40b45c"}
+{"query": "My son is having an Incredibles themed birthday party tonight, and I want to make a dinner recipe similar to the leftover night dinner scene shown in the movie", "pred_id": "145121970e", "gold_id": "de42b7b391"}
+{"query": "Can I have a sandwich lunch recipe that will keep me full during work and I can leave in the heat?", "pred_id": "5e4d5bf5b2", "gold_id": "4e6e32422b"}
+{"query": "What healthy fruit smoothie recipes can I make for lunch with my bookclub members who really track calories?", "pred_id": "324c406768", "gold_id": "51bf42c5a9"}
+{"query": "I want a healthy smoothie recipe for lunch that will help me recover after I play baseball", "pred_id": "8cc2b264f8", "gold_id": "8cc2b264f8"}
+{"query": "I work outside in the winter, whats a thick beef soup recipe I could bring in my thermos for lunch if I don't like stew?", "pred_id": "aaea31c5f9", "gold_id": "0391295c7d"}
+{"query": "What pasta salad recipes can I make for a surprise lunch visit from friends?", "pred_id": "1faa1450a1", "gold_id": "661a6ab43b"}
+{"query": "What are filling vegan lunch recipes I can make for my friends who missed breakfast and don't like seeds?", "pred_id": "795fbf211d", "gold_id": "1c9c252105"}
+{"query": "How would I make fresh ramen noodles? I do not want to buy them from a store. Also, spicy food really hurts my stomach", "pred_id": "981c1107e0", "gold_id": "981c1107e0"}
+{"query": "I have a cold and feel dehydrated, what's a recipe I can make for lunch that will help me feel better?", "pred_id": "3d24230793", "gold_id": "3d24230793"}
+{"query": "I want to make spicy chicken for my boyfriend and he doesn't like greasy food", "pred_id": "54a96ce8e4", "gold_id": "54a96ce8e4"}
+{"query": "I need some recipe ideas for appetizers I can make on my barbeque", "pred_id": "342f7aa931", "gold_id": "c1d562e743"}
+{"query": "My son is skinny and wants to get bigger, what are some good snacks I could send with him to school?", "pred_id": "a3fca9963a", "gold_id": "a3fca9963a"}
+{"query": "I work as a landscaper in the summer, so I don't have any way to refrigerate food. Can I have some snack recipes that I know won't spoil in the heat?", "pred_id": "bdb5f1ab56", "gold_id": "9632c63372"}
+{"query": "I need some recipe ideas for snacks I can send with my daughter to bring to school", "pred_id": "848897976b", "gold_id": "106f484afa"}
+{"query": "My daughter only eats cheese and crackers for snack, what are some alternative recipes to sneak some vegetables into her diet?", "pred_id": "3cf47190ea", "gold_id": "5606ce57db"}
+{"query": "Can I have some healthier snack recipes that have kale?", "pred_id": "2ac64f45df", "gold_id": "2ac64f45df"}
+{"query": "What's a sweet and spicy snack I can make?", "pred_id": "a0751f8e57", "gold_id": "9aa69ef8df"}
+{"query": "At my job site I don't have any shade to store my food. What are some snack recipes that can last all day exposed to the sun?", "pred_id": "bdb5f1ab56", "gold_id": "9632c63372"}
+{"query": "I really need to cut down on my weight, all the snacks I eat are too unhealthy. What snack recipes can I make with vegetables?", "pred_id": "766ddeb366", "gold_id": "766ddeb366"}
+{"query": "I want to make a fruit dessert for my girlfriend but lactose makes her stomach hurt, and she only likes expensive fruits", "pred_id": "ca19ecd074", "gold_id": "ba3dc451c0"}
+{"query": "I want a dessert recipe for brownies and fudge that I won't feel bad about eating on my diet", "pred_id": "8698ec2712", "gold_id": "8698ec2712"}
+{"query": "What are some non-standard flavors of ice cream I can make for my mom?", "pred_id": "3545bb0e98", "gold_id": "05809ba507"}
+{"query": "I want to start baking desserts as a hobby, can I have a recipe for making pastry dough from scratch?", "pred_id": "243e981ceb", "gold_id": "243e981ceb"}
+{"query": "My sons friend is coming over and he's highly allergic to nuts and dairy. What dessert could I make for him?", "pred_id": "2e3a11cc57", "gold_id": "2e3a11cc57"}
+{"query": "I want to make apple and blueberry pie desserts for the community center bake sale, could I have one recipe to make both types of pies?", "pred_id": "ece883f5b2", "gold_id": "ece883f5b2"}
+{"query": "My kid isn't very adventurous and only likes plain ice cream, can I have a recipe for that?", "pred_id": "230e8c8395", "gold_id": "230e8c8395"}
+{"query": "I'm sick of desserts that sacrifice flavor to be healthy. Can you suggest some nutty brownie dessert recipes?", "pred_id": "e6cc9ce522", "gold_id": "e6cc9ce522"}
+{"query": "I made some vanilla cupcakes, can I have tangy icing to pair with them that's not chocolate flavored?", "pred_id": "5f9a1a2b63", "gold_id": "5f9a1a2b63"}
+{"query": "I want to show my brother that I can make nachos better than the keg, can I have a nacho recipe that is similar to a high end restaurant?", "pred_id": "2d0142bd39", "gold_id": "2d0142bd39"}
+{"query": "I want to make a meatball appetizer for my party", "pred_id": "173499296b", "gold_id": "f683deb500"}
+{"query": "I'm having bread sticks as an appetizer while I watch the superbowl, can I have a cheesy dip to go with it?", "pred_id": "5b45c39e98", "gold_id": "139b8fb1f7"}
+{"query": "I want some greasy appetizers while I watch the superbowl, can I have a recipe similar to appetizers I would find at a cheap pub?", "pred_id": "7d5a68f061", "gold_id": "7d5a68f061"}
+{"query": "I'd like to have a halloween themed snack for my halloween party.", "pred_id": "4ad12bd622", "gold_id": "4aa5eb0875"}
+{"query": "I want chicken wing appetizer that I can eat with my 83 year old grandpa, who has a weak heart", "pred_id": "56b434c67f", "gold_id": "56b434c67f"}
+{"query": "My grandparents friends are coming over for dinner, can I get an entree recipe that's easy on the teeth?", "pred_id": "03197a2163", "gold_id": "6530deca11"}
+{"query": "I love the cheese filled potato bites served at Costco, can I make something similar but not as unhealthy?", "pred_id": "636d39ccb1", "gold_id": "636d39ccb1"}
+{"query": "I don't do well with dairy, but I want a loaded nacho appetizer to watch the game with", "pred_id": "5ecd099f38", "gold_id": "c32431541c"}
+{"query": "I want a healthier breakfast omelette I can make quickly before work", "pred_id": "8efd111983", "gold_id": "8efd111983"}
+{"query": "What's a breakfast dish containing meat that I can make if I'm not in a rush?", "pred_id": "9269714d48", "gold_id": "0a91eb4582"}
+{"query": "Can you give me a vegan breakfast recipe that's full of nuts and fresh fruit?", "pred_id": "7b6e88a265", "gold_id": "6a6e4b8b4d"}
+{"query": "Would I be able to get a breakfast recipe with seafood if eating dairy makes me sick and I only have a bbq to cook on?", "pred_id": "10e35b6bb5", "gold_id": "1936efb4cd"}
+{"query": "Can you give me a vegan all day breakfast recipe?", "pred_id": "9269714d48", "gold_id": "9269714d48"}
+{"query": "I feel like having a breakfast pie that has sausage", "pred_id": "66881305bf", "gold_id": "66881305bf"}
+{"query": "Can I get a breakfast that's easy to eat on-the-go, like a wrap?", "pred_id": "2dbc8c34e5", "gold_id": "2dbc8c34e5"}
+{"query": "Bacon is my favorite food for breakfast, and the consistency is really important to me. Would I be able to have a chewy bacon recipe?", "pred_id": "3b9f7ee5ed", "gold_id": "7263f03aad"}
+{"query": "I can't eat lactose, and don't have a lot of time in the morning to make food - would I be able to have a quick breakfast recipe?", "pred_id": "065223c216", "gold_id": "0ad3b994df"}
+{"query": "I'm sick and tired of a traditional breakfast, would I be able to have a unique breakfast dish without eggs, bacon, or sausage?", "pred_id": "05894f022d", "gold_id": "1ac5fdabbc"}
+{"query": "I'm focusing on eating healthy, can I get a hash brown recipe for brunch?", "pred_id": "0cff3baa6d", "gold_id": "9c67a15903"}
+{"query": "I'm looking for a vegan egg dish and I also need to watch my cholesterol", "pred_id": "b604b99881", "gold_id": "b604b99881"}
+{"query": "What's a fried food that isn't too bad for my heart?", "pred_id": "fe105b2fa1", "gold_id": "fe105b2fa1"}
+{"query": "Can I get a french toast recipe with fruit for breakfast?", "pred_id": "8a164f3691", "gold_id": "ccb6b68fc7"}
+{"query": "Can I have a brunch meal that's naturally sweet and doesn't take long to prepare?", "pred_id": "26aeb9688e", "gold_id": "03a0f7f804"}
+{"query": "I want to make an Asian vegetable platter for brunch with my friends, what are some good recipes?", "pred_id": "cf50b6f537", "gold_id": "cf50b6f537"}
+{"query": "Can I get a meat lovers soup with noodles for a hangover brunch?", "pred_id": "16edfc5b7b", "gold_id": "1ef84c58ae"}
+{"query": "I would like a vegan banana bread recipe for brunch, however I'm allergic to nuts and I don't like chocolate", "pred_id": "97a46a9c42", "gold_id": "366073e678"}
+{"query": "I want a winter holiday drink but not something that's too sweet", "pred_id": "70fc5e9e6d", "gold_id": "70fc5e9e6d"}
+{"query": "Can I get a long island iced tea drink that isn't too sweet and has alcohol?", "pred_id": "11732573c6", "gold_id": "96aebd0344"}
+{"query": "I just quit drinking, can I get a non-alcoholic drink recipe?", "pred_id": "56f9c50902", "gold_id": "56f9c50902"}
+{"query": "Can I get a recipe for a fruit drink with a kick and isn't too sugary?", "pred_id": "8373d4d104", "gold_id": "8373d4d104"}
+{"query": "Can I get a coconut drink that is alcoholic?", "pred_id": "8d27c9a9af", "gold_id": "8d27c9a9af"}
+{"query": "I'm really low on vitamins, can I have a drink that helps with that?", "pred_id": "cc414542ec", "gold_id": "cc414542ec"}
+{"query": "I haven't been eating many vegetables this winter, can I get a drink recipe that will help me up my vegetable consumption?", "pred_id": "f468207199", "gold_id": "07eaf5a916"}
+{"query": "I work a stressful job, can you recommend a strong coffee to help me power through the long hours?", "pred_id": "823cb214e1", "gold_id": "823cb214e1"}
+{"query": "Can I have a chocolate smoothie without any fruits, berries, or grains?", "pred_id": "0fe9f33a7f", "gold_id": "859037f61c"}
+{"query": "What's a good warm dish to make for my kids who are sick with the flu?", "pred_id": "d858ea38c3", "gold_id": "d858ea38c3"}
+{"query": "Can I get a recipe for easy to make beef stew that won't affect my diet?", "pred_id": "aaea31c5f9", "gold_id": "aaea31c5f9"}
+{"query": "Can I get a vegetable soup recipe that has some sort of meat?", "pred_id": "6f9f3bfe81", "gold_id": "2054c31cfe"}
+{"query": "Can I get a soup recipe that contains chicken or beef and other ingredients that aren't vegetables?", "pred_id": "0cf917d8e5", "gold_id": "cda0737db1"}
+{"query": "I want to make a healthy soup recipe for my family, what is a good recipe?", "pred_id": "3d24230793", "gold_id": "3d24230793"}
+{"query": "I like to try flavors that seem weird and unconventional, would I be able to have a soup recipe with cheese and alcohol?", "pred_id": "bbcdcdc481", "gold_id": "bbcdcdc481"}
+{"query": "Cheese makes me run to the washroom, so I'd like a shrimp soup recipe that isn't chowder", "pred_id": "3868967c48", "gold_id": "ffd9d10b78"}
+{"query": "I want a thick and spicy chicken soup recipe", "pred_id": "e5d4318d05", "gold_id": "e5d4318d05"}
+{"query": "Can I have a meat stew recipe I can put on the stove and leave for a long time?", "pred_id": "bc96932a2d", "gold_id": "bc96932a2d"}
+{"query": "I want a recipe to make a lamb entree like I would be able to get at Milos greek restaurant", "pred_id": "9bd9467369", "gold_id": "133cfce941"}
+{"query": "I would like to make a traditional chicken entree that's greek-inspired", "pred_id": "a99ddbc5f4", "gold_id": "a99ddbc5f4"}
+{"query": "I can't handle spicy food and I would like a lemon chicken entree recipe", "pred_id": "6f5173a6b0", "gold_id": "6f5173a6b0"}
+{"query": "Can I get a scallop entree recipe that has bacon, and is similar to an entree you could get at red lobster?", "pred_id": "a3e4330132", "gold_id": "a3e4330132"}
+{"query": "I originally bought some sashimi-grade fish to make sushi, but now I want to use it to make a different entree", "pred_id": "00923d4458", "gold_id": "069aa1f8af"}
+{"query": "What is a cod entree I could make that's not a soup or stew?", "pred_id": "0ea695884e", "gold_id": "63a8d8ccea"}
+{"query": "Can I get a healthy vegan burger entree?", "pred_id": "3605f03f94", "gold_id": "3605f03f94"}
+{"query": "Can I get a fast, fried rice side dish recipe with seafood?", "pred_id": "499ecd544b", "gold_id": "499ecd544b"}
+{"query": "Can I get a recipe for a baked potato that watches calories?", "pred_id": "23e887caaa", "gold_id": "23e887caaa"}
+{"query": "I want a recipe for sweet potato fries that isn't too bad for me but still has flavor", "pred_id": "9060c782a6", "gold_id": "9060c782a6"}
+{"query": "Can I get a simple nut-free coleslaw side dish, nothing extra?", "pred_id": "8ee91cce2e", "gold_id": "9ec3b2b11f"}
+{"query": "I want to make an egg-based finger food for a family reunion, can I have a good recipe?", "pred_id": "96db110d73", "gold_id": "96db110d73"}
+{"query": "I want to cook a chicken entree on my new grill.", "pred_id": "667c15e82d", "gold_id": "667c15e82d"}
+{"query": "I am allergic to nuts, what are some good braised pork entree recipes?", "pred_id": "e33dd86ec8", "gold_id": "e33dd86ec8"}
+{"query": "I have to use some eggs before they get bad, what's a noodle dish I can make?", "pred_id": "5fb69567c6", "gold_id": "14cf9f5a09"}
+{"query": "What is a side dish recipe that will set my mouth on fire?", "pred_id": "171fcb3767", "gold_id": "1158f0fbd4"}
+{"query": "What's a spicy dish for someone who has lower spice tolerance?", "pred_id": "bb089cf062", "gold_id": "bb089cf062"}
+{"query": "Whats a marinade I could make to make my ribeye taste like a keg entree?", "pred_id": "56c0c5427a", "gold_id": "298b55bc10"}
+{"query": "What's a good broccoli side dish I can make for my young son who loves meat?", "pred_id": "aab9dd06db", "gold_id": "aab9dd06db"}

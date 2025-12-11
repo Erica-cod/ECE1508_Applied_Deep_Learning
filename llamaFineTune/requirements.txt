@@ -1,0 +1,32 @@
+# Core dependencies for Llama fine-tuning and evaluation
+# Environment: llama-mpr (conda/Python 3.10)
+
+# Deep Learning Framework
+torch==2.5.1
+
+# Hugging Face Ecosystem
+transformers==4.57.1
+datasets==4.4.1
+accelerate==1.11.0
+huggingface-hub==0.35.3
+safetensors==0.6.2
+
+# Parameter-Efficient Fine-tuning
+peft==0.17.1
+
+# Quantization
+bitsandbytes==0.48.1
+
+# Utilities
+numpy==2.2.6
+tqdm==4.67.1
+
+# GPT-3 Baseline (optional, only needed if regenerating embeddings)
+openai==0.28.1
+
+# Note: For CUDA support, install PyTorch with:
+# pip install torch==2.5.1+cu121 --index-url https://download.pytorch.org/whl/cu121
+
+# Installation:
+# pip install -r requirements.txt
+

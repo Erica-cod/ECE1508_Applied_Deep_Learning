@@ -1,0 +1,50 @@
+{"query": "I want to cook polish sausage with sauerkraut", "pred_letter": "E", "gold_letter": "E"}
+{"query": "My father likes spicy food and I wanted to find a beef recipe that I could make for our family gathering this week", "pred_letter": "D", "gold_letter": "E"}
+{"query": "I want something similar to Chipotle and also healthy", "pred_letter": "D", "gold_letter": "D"}
+{"query": "What can I make with frozen berries that's not a drink?", "pred_letter": "E", "gold_letter": "E"}
+{"query": "Can I get a long island iced tea drink that isn't too sweet and has alcohol?", "pred_letter": "A", "gold_letter": "A"}
+{"query": "I'm craving German snacks", "pred_letter": "B", "gold_letter": "B"}
+{"query": "I can't handle spicy food and I would like a lemon chicken entree recipe", "pred_letter": "A", "gold_letter": "A"}
+{"query": "Do you have a cookie recipe that's good for someone with a nut allergy?", "pred_letter": "E", "gold_letter": "E"}
+{"query": "I would like to make either apple or cherry pie for dessert", "pred_letter": "B", "gold_letter": "B"}
+{"query": "I work outside in the winter, whats a thick beef soup recipe I could bring in my thermos for lunch if I don't like stew?", "pred_letter": "E", "gold_letter": "E"}
+{"query": "Can you give me a post-workout recovery meal?", "pred_letter": "A", "gold_letter": "A"}
+{"query": "I would like a shrimp recipe and I'm trying to eat a balanced diet", "pred_letter": "A", "gold_letter": "A"}
+{"query": "I want a healthier breakfast omelette I can make quickly before work", "pred_letter": "C", "gold_letter": "C"}
+{"query": "What are filling vegan lunch recipes I can make for my friends who missed breakfast and don't like seeds?", "pred_letter": "B", "gold_letter": "E"}
+{"query": "I want to make a Chinese dessert with custard", "pred_letter": "E", "gold_letter": "C"}
+{"query": "I want a baby food recipe that contains a variety of vitamins from natural sources, such as fruits", "pred_letter": "D", "gold_letter": "D"}
+{"query": "I need to prepare a traditional Valentine's main course for my significant other.", "pred_letter": "D", "gold_letter": "D"}
+{"query": "I want kebabs that are easy on the stomach", "pred_letter": "C", "gold_letter": "C"}
+{"query": "I pack my lunch for school every day but I hate the hassle of bringing multiple containers", "pred_letter": "C", "gold_letter": "C"}
+{"query": "What is a cod entree I could make that's not a soup or stew?", "pred_letter": "C", "gold_letter": "C"}
+{"query": "Do you have a breakfast recipe for people with dysphagia?", "pred_letter": "A", "gold_letter": "A"}
+{"query": "What's a good cheesecake recipe if I'm considering going keto?", "pred_letter": "D", "gold_letter": "D"}
+{"query": "Give me a low-glycemic dish for dinner", "pred_letter": "C", "gold_letter": "C"}
+{"query": "I'm from Capetown and I want to introduce my vegetarian friend to cuisine from my country", "pred_letter": "A", "gold_letter": "A"}
+{"query": "How do I spice up my instant noodles? I'm bored of following the plain recipe on the packaging", "pred_letter": "A", "gold_letter": "A"}
+{"query": "I want a meat dish suitable for date night", "pred_letter": "C", "gold_letter": "C"}
+{"query": "I want a healthy lunch dish", "pred_letter": "B", "gold_letter": "B"}
+{"query": "I want to bake something sweet for my grandma's birthday", "pred_letter": "A", "gold_letter": "B"}
+{"query": "I want some filling American food", "pred_letter": "B", "gold_letter": "B"}
+{"query": "I want to make a healthy guacamole", "pred_letter": "D", "gold_letter": "D"}
+{"query": "I would like a comforting recipe with mushrooms for a cold day", "pred_letter": "C", "gold_letter": "E"}
+{"query": "I want a dish with meat and I don't like vegetables", "pred_letter": "A", "gold_letter": "D"}
+{"query": "Can I have a recipe for barbecue meat, but not seafood?", "pred_letter": "A", "gold_letter": "B"}
+{"query": "I'm in a rush to go to school this morning, what should I make?", "pred_letter": "D", "gold_letter": "C"}
+{"query": "I'm looking for a way to introduce a source of greens into my kids' diets", "pred_letter": "D", "gold_letter": "D"}
+{"query": "Can I have a brussel sprouts recipe with common ingredients?", "pred_letter": "E", "gold_letter": "B"}
+{"query": "What are some desserts I can make for my dog?", "pred_letter": "A", "gold_letter": "A"}
+{"query": "I'm looking for a vegan egg dish and I also need to watch my cholesterol", "pred_letter": "A", "gold_letter": "A"}
+{"query": "What is a side dish recipe that will set my mouth on fire?", "pred_letter": "B", "gold_letter": "B"}
+{"query": "I'm allergic to dairy but I really love ice cream", "pred_letter": "C", "gold_letter": "C"}
+{"query": "I'd like a cucumber recipe where the cucumbers aren't cooked", "pred_letter": "D", "gold_letter": "C"}
+{"query": "Can I have a recipe for grilled fish that's not tuna", "pred_letter": "D", "gold_letter": "D"}
+{"query": "Recipes for mac and cheese with multiple types of cheese", "pred_letter": "C", "gold_letter": "C"}
+{"query": "I want to use up the corn in my fridge for a warm dish", "pred_letter": "B", "gold_letter": "B"}
+{"query": "I want to make fries like the ones in McDonalds", "pred_letter": "A", "gold_letter": "A"}
+{"query": "Could I have some sweet dim sum?", "pred_letter": "B", "gold_letter": "C"}
+{"query": "I want to bake a sweet lemon tart", "pred_letter": "D", "gold_letter": "A"}
+{"query": "Ways to cook lamb with fragrant seasoning", "pred_letter": "D", "gold_letter": "D"}
+{"query": "I want vegetables for a breakfast meal", "pred_letter": "E", "gold_letter": "E"}
+{"query": "My uncle who is a Buddhist monk is coming over for lunch and I have no idea what I should cook for him", "pred_letter": "D", "gold_letter": "C"}

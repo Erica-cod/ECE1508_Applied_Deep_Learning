@@ -1,89 +1,77 @@
 # -*- coding: utf-8 -*-
-import json, argparse, sys
-from collections import OrderedDict
-
-def load_json(path):
-    with open(path,"r",encoding="utf-8") as f: return json.load(f)
+"""
+Simplified comparison script: directly compares predictions without complex ID mapping
+Note: Since option order is shuffled, MPR predictions compare letters, Embedding predictions compare IDs
+"""
+import json, argparse
 
 def load_jsonl(path):
     with open(path,"r",encoding="utf-8") as f:
         for l in f:
             if l.strip(): yield json.loads(l)
 
-LETTER = "ABCDE"
-
-def build_query2_ordered_ids(raw500_path):
-    """从 500QA.json 构造：query -> [option_ids in insertion order]"""
-    raw = load_json(raw500_path)
-    q2ids = {}
-    for ex in raw:
-        # Python 3.7+ 保持 JSON dict insertion order
-        ids_in_order = list(OrderedDict(ex["options"]).keys())
-        q2ids[ex["query"]] = {
-            "ids_in_order": ids_in_order,
-            "gold_id": ex["answer"]
-        }
-    return q2ids
-
-def letter_to_id(letter, ids_in_order):
-    if not letter or letter not in LETTER: return None
-    idx = LETTER.index(letter)
-    if idx >= len(ids_in_order): return None
-    return ids_in_order[idx]
-
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--raw500", default="Recipe-MPR/data/500QA.json",
-                    help="原始 500QA.json，用于恢复 选项顺序 与 gold id")
     ap.add_argument("--mpr_preds", default="mpr_preds.jsonl",
-                    help="eval_mpr.py 保存的预测（含 query, pred_letter, gold_letter）")
+                    help="Predictions saved by eval_mpr.py (contains query, pred_letter, gold_letter)")
     ap.add_argument("--emb_preds", default="emb_preds.jsonl",
-                    help="eval_embedding_baseline.py 保存的预测（含 query, pred_id, gold_id）")
+                    help="Predictions saved by eval_embedding_baseline.py (contains query, pred_id, gold_id)")
+    ap.add_argument("--test_data", default="data/test.jsonl",
+                    help="Test data for filtering embedding predictions")
     args = ap.parse_args()
 
-    q2 = build_query2_ordered_ids(args.raw500)
-
-    # 1) 读 MPR（生成式）预测，转成 id
+    # 1) Read MPR (generative) predictions, directly compare letters
     mpr_right = mpr_tot = 0
     for r in load_jsonl(args.mpr_preds):
-        q = r.get("query")
-        pl = (r.get("pred_letter") or "").strip().upper()
-        meta = q2.get(q)
-        if not q or not meta:
-            continue
-        pred_id = letter_to_id(pl, meta["ids_in_order"])
-        gold_id = meta["gold_id"]
-        if pred_id is None:
+        pred = (r.get("pred_letter") or "").strip().upper()
+        gold = (r.get("gold_letter") or "").strip().upper()
+        if not pred or not gold:
             continue
         mpr_tot += 1
-        if pred_id == gold_id:
+        if pred == gold:
             mpr_right += 1
 
-    # 2) 读 Embedding 预测
+    # 2) Read test set queries
+    test_queries = set()
+    for line in open(args.test_data, 'r', encoding='utf-8'):
+        data = json.loads(line)
+        lines = data['text'].split('\n')
+        for i, l in enumerate(lines):
+            if l.startswith('Question:') and i+1 < len(lines):
+                test_queries.add(lines[i+1].strip())
+                break
+
+    # 3) Read Embedding predictions, filter test set samples
     emb_right = emb_tot = 0
     for r in load_jsonl(args.emb_preds):
-        q = r.get("query")
+        query = r.get("query")
+        # Only count test set samples
+        if query not in test_queries:
+            continue
         pred_id = r.get("pred_id")
         gold_id = r.get("gold_id")
-        if q not in q2:
-            continue
-        if pred_id is None:
+        if pred_id is None or gold_id is None:
             continue
         emb_tot += 1
         if pred_id == gold_id:
             emb_right += 1
 
-    print("="*60)
-    print("Unified comparison (both mapped to option_id exact-match)")
+    print("="*70)
+    print("Model Comparison Results (direct prediction comparison)")
+    print("="*70)
     if mpr_tot:
-        print(f"MPR (fine-tuned)   : {mpr_right}/{mpr_tot}  acc={mpr_right/mpr_tot:.4f}")
+        print(f"Llama3-MPR-SFT     : {mpr_right}/{mpr_tot}  accuracy={mpr_right/mpr_tot:.4f} ({mpr_right/mpr_tot*100:.2f}%)")
     else:
-        print("MPR (fine-tuned)   : no comparable samples")
+        print("Llama3-MPR-SFT     : No valid predictions")
     if emb_tot:
-        print(f"Embedding baseline : {emb_right}/{emb_tot}  acc={emb_right/emb_tot:.4f}")
+        print(f"GPT-3 Embedding    : {emb_right}/{emb_tot}  accuracy={emb_right/emb_tot:.4f} ({emb_right/emb_tot*100:.2f}%)")
     else:
-        print("Embedding baseline : no comparable samples")
-    print("="*60)
+        print("GPT-3 Embedding    : No valid predictions")
+    
+    if mpr_tot and emb_tot:
+        improvement = (mpr_right/mpr_tot - emb_right/emb_tot) * 100
+        print(f"\nImprovement: {improvement:+.2f} percentage points")
+    print("="*70)
 
 if __name__ == "__main__":
     main()

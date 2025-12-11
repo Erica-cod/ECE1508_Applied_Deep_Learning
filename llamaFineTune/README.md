@@ -1,74 +1,153 @@
-# Recipe-MPR Llama3 微调实验
+# Recipe-MPR Llama3 Fine-tuning Experiment
 
-本项目对比了微调的 Llama3-MPR-SFT 模型与 GPT-3 Embedding Baseline 在 Recipe-MPR 数据集上的性能。
+This project compares fine-tuned Llama models with GPT-3 Embedding Baseline on the Recipe-MPR dataset for recipe recommendation tasks.
 
-## 📊 实验结果
+## Prerequisites
 
-| 模型 | 准确率 |
-|------|--------|
-| **Llama3-MPR-SFT** | **84.00%** |
-| GPT-3 Embedding | 54.55% |
+Before running this project, you need to:
 
-**提升**: +29.45 个百分点
+### 1. Download Recipe-MPR Dataset
+```bash
+git clone https://github.com/Interactive-NLP/Recipe-MPR.git
+# Or download from: https://github.com/Interactive-NLP/Recipe-MPR
+```
 
-## 📁 项目结构
+The dataset file should be at: `Recipe-MPR/data/500QA.json`
+
+### 2. Download Llama Models
+
+You need to download the following models from Hugging Face:
+
+```bash
+# Option 1: Using huggingface-cli
+huggingface-cli download meta-llama/Llama-3.2-1B-Instruct --local-dir ~/models/Llama-3.2-1B-Instruct
+huggingface-cli download meta-llama/Llama-3.2-3B-Instruct --local-dir ~/models/Llama-3.2-3B-Instruct
+
+# Option 2: Using git lfs
+cd ~/models
+git clone https://huggingface.co/meta-llama/Llama-3.2-1B-Instruct
+git clone https://huggingface.co/meta-llama/Llama-3.2-3B-Instruct
+```
+
+
+### 3. Install Dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+See `requirements.txt` for the complete list of dependencies.
+
+### 4. (Optional) GPT-3 Embeddings
+
+If you want to run the GPT-3 baseline:
+- Get an OpenAI API key from https://platform.openai.com/api-keys
+- Pre-computed embeddings are already provided in `testing_results/embeddings_with_aspects.json`
+
+
+##  Project Structure
 
 ```
 llamaFineTune/
-├── data/                          # 数据集
-│   ├── train.jsonl               # 训练集 (300 samples)
-│   ├── valid.jsonl               # 验证集 (100 samples)
-│   └── test.jsonl                # 测试集 (100 samples)
+├── data/                          # Dataset
+│   ├── train.jsonl               # Training set (300 samples)
+│   ├── valid.jsonl               # Validation set (100 samples)  
+│   └── test.jsonl                # Test set (100 samples)
 │
-├── Recipe-MPR/                    # 原始数据集和参考代码
-│   └── data/500QA.json           # 原始 500 个食谱问答
+├── Recipe-MPR/                    # Original dataset and reference code
+│   └── data/500QA.json           # Original 500 recipe QA pairs
 │
-├── outputs/                       # 训练输出
+├── outputs/                       # Training outputs
 │   └── llama3-mpr-sft/
-│       └── final/                # 最终微调模型
+│       └── final/                # Final fine-tuned model
 │
-├── compare-result/                # 实验结果
-│   ├── 最终实验报告.md            # 完整实验报告 ⭐
-│   ├── detailed_errors.json      # 详细错误案例
-│   ├── overall_stats.csv         # 总体统计
-│   └── stats_by_type.csv         # 按查询类型统计
 │
-├── prep_mpr.py                    # 数据准备脚本
-├── train_sft.py                   # 模型微调脚本
-├── eval_mpr.py                    # 评估微调模型
-├── eval_embedding_baseline.py     # 评估 embedding baseline
-├── compare_runs.py                # 对比两个模型结果
+├── testing_results/               # All testing data and predictions
+│   ├── embeddings_with_aspects.json  # GPT-3 pre-computed embeddings (101MB)
+│   ├── mpr_preds_1b_zeroshot.jsonl   # 1B model zero-shot predictions
+│   ├── mpr_preds_1b_ft_80_10_10.jsonl  # 1B model fine-tuned predictions
+│   ├── mpr_preds_3b_zeroshot.jsonl   # 3B model zero-shot predictions
+│   ├── mpr_preds_3b_ft_80_10_10.jsonl  # 3B model fine-tuned predictions
+│   ├── emb_preds_80_10_10.jsonl      # GPT-3 embedding predictions
+│   └── emb_preds.jsonl               # GPT-3 embedding predictions (legacy)
 │
-├── embeddings_with_aspects.json   # GPT-3 预计算的 embeddings
-├── mpr_preds.jsonl               # Llama3-MPR-SFT 预测结果
-└── emb_preds.jsonl               # GPT-3 Embedding 预测结果
+├── baselines/                     # GPT-3 baseline scripts
+│   └── generate_GPT3_embeddings.py  # Generate embeddings via API
+│
+├── training_on_80_10_10.log       # Training logs (loss, metrics, time)
+├── prep_mpr.py                    # Data preparation script
+├── train_sft.py                   # Model fine-tuning script
+├── eval_mpr.py                    # Evaluate fine-tuned model
+├── eval_embedding_baseline.py     # Evaluate embedding baseline
+├── compare_runs.py                # Compare two model results
+├── analyze_by_query_type.py       # Analyze by query type
+└── requirements.txt               # Python dependencies
 ```
 
-## 🚀 使用方法
+## Usage
 
-### 1. 准备数据
+### 1. Prepare Data
 
 ```bash
 python prep_mpr.py \
     --infile Recipe-MPR/data/500QA.json \
     --outdir data \
-    --seed 42
-```
+    --seed 42 \
+    --split "80,10,10"  # train/valid/test split ratio
+``` 
+This generates:
+- `data/train.jsonl`: Training set (400 samples for 80/10/10 split)
+- `data/valid.jsonl`: Validation set (50 samples)
+- `data/test.jsonl`: Test set (50 samples)
 
-### 2. 训练模型
+**Important**: Option orders are randomly shuffled to avoid position bias.
+
+### 2. (Optional) Generate GPT-3 Embeddings
+
+If you need to run the GPT-3 embedding baseline, first generate embeddings:
 
 ```bash
-python train_sft.py
+cd baselines
+# Set your OpenAI API key
+export OPENAI_API_KEY=your-key-here
+python generate_GPT3_embeddings.py
 ```
 
-需要：
-- Llama-3.2-3B-Instruct 基础模型（放在 `~/models/Llama-3.2-3B-Instruct/`）
-- 8GB+ GPU 显存
-- 约 12-15 分钟训练时间
+This will:
+- Pre-compute embeddings for all 500 queries
+- Pre-compute embeddings for all 2,500 options (500 × 5)
+- Cache results in `embeddings_with_aspects.json` (~101 MB)
+- Support resumption if interrupted
 
-### 3. 评估模型
+**Note**: The pre-computed `embeddings_with_aspects.json` is already provided in `testing_results/` folder.
 
-**评估微调模型**：
+### 3. Train Model
+
+```bash
+python train_sft.py \
+    --model_dir ~/models/Llama-3.2-3B-Instruct \
+    --output_dir outputs/llama3-mpr-sft \
+    --epochs 5
+```
+
+Requirements:
+- Llama-3.2-3B-Instruct base model (in `~/models/Llama-3.2-3B-Instruct/`)
+- 8GB+ GPU memory
+- ~15 minutes training time (400 samples, 5 epochs)
+
+**Training Details** (from `training_on_80_10_10.log`):
+- **3B Model**: 
+  - Trainable params: 2.3M (0.07% of 3.2B)
+  - Training time: ~15 minutes
+  - Final eval loss: 1.629
+- **1B Model**:
+  - Trainable params: 852K (0.07% of 1.2B)
+  - Training time: ~6 minutes
+  - Final eval loss: 1.717
+
+### 4. Evaluate Models
+
+**Evaluate fine-tuned model**:
 ```bash
 python eval_mpr.py \
     --data data/test.jsonl \
@@ -77,272 +156,97 @@ python eval_mpr.py \
     --save_pred mpr_preds.jsonl
 ```
 
-**评估 Embedding Baseline**：
+**Evaluate Embedding Baseline**:
 ```bash
 python eval_embedding_baseline.py \
     --data data/test.jsonl \
     --raw_json Recipe-MPR/data/500QA.json \
-    --emb embeddings_with_aspects.json \
+    --emb testing_results/embeddings_with_aspects.json \
     --save_pred emb_preds.jsonl
 ```
 
-### 4. 对比结果
+### 5. Compare Results
 
 ```bash
 python compare_runs.py \
-    --raw500 Recipe-MPR/data/500QA.json \
     --mpr_preds mpr_preds.jsonl \
-    --emb_preds emb_preds.jsonl
+    --emb_preds emb_preds.jsonl \
+    --test_data data/test.jsonl
 ```
 
-## 📖 查看结果
+### 6. Analyze by Query Type
 
-完整的实验报告在 `compare-result/最终实验报告.md`
-
-## 🔑 关键发现
-
-1. **数据偏差问题**：发现并修复了原始数据中所有答案都在位置 A 的问题
-2. **微调效果显著**：3B 模型经过微调后超越了通用的 GPT-3 Embedding
-3. **任务特化重要**：针对任务的微调比模型规模更关键
-
-## 📚 依赖环境
-
-```
-transformers
-datasets
-peft
-bitsandbytes
-torch
-numpy
+```bash
+python analyze_by_query_type.py
 ```
 
-## 📄 许可
+This generates a detailed breakdown by query type (Specific, Analogical, Negated, Commonsense, Temporal) and provides LaTeX table code ready for paper insertion.
 
-本项目基于 Recipe-MPR 数据集进行实验。
+## Quick Start with Pre-computed Results
 
-# Recipe-MPR 数据集实验最终报告
+If you want to quickly see the results without training:
 
-## 📋 实验背景
+```bash
+# Copy pre-computed results from testing_results/
+cp testing_results/mpr_preds_*.jsonl .
+cp testing_results/emb_preds_80_10_10.jsonl .
 
-本实验旨在对比微调后的 Llama3-MPR-SFT 模型与 GPT-3 Embedding Baseline 在 Recipe-MPR 食谱推荐数据集上的性能表现。
-
----
-
-## 🔍 重要发现：数据偏差问题
-
-在实验过程中，我们发现了一个**严重的数据偏差问题**：
-
-### 问题描述
-- ❌ 原始 Recipe-MPR 数据集中，**所有 500 个样本的正确答案都固定在选项位置 0（字母 A）**
-- ❌ 这导致最初训练的模型只学会了一个简单捷径：**永远输出 A**
-- ❌ 初始的 100% 准确率完全是虚假的，模型并没有真正理解任务
-
-### 修复方案
-我们修改了数据准备脚本 `prep_mpr.py`：
-```python
-def build_record(ex, shuffle_options=True):
-    opts = list(OrderedDict(ex["options"]).items())
-    # 随机打乱选项顺序，避免答案总是在位置A
-    if shuffle_options:
-        random.shuffle(opts)
-    # ... 后续处理
+# Run analysis
+python analyze_by_query_type.py
 ```
 
-### 修复验证
-修复后的数据集答案分布均匀：
+All testing data and predictions are available in `testing_results/` folder.
 
-**测试集答案分布**：
-- A: 22 (22.0%)
-- B: 15 (15.0%)
-- C: 29 (29.0%)
-- D: 18 (18.0%)
-- E: 16 (16.0%)
+##  View Results
 
-✅ 答案现在均匀分布在所有选项中，接近随机的 20%
+Complete experiment report in `compare-result/FINAL_REPORT.md`
 
----
+All prediction files and testing data are organized in `testing_results/` folder:
+- Model predictions (1B/3B, zero-shot/fine-tuned)
+- GPT-3 embedding predictions
+- Pre-computed embeddings cache
 
-## 📊 实验结果（修复后）
+Training logs are available in `training_on_80_10_10.log`, which contains:
+- Complete training process for both 1B and 3B models
+- Loss curves and evaluation metrics at each epoch
+- Training time: 3B (~15 min), 1B (~6 min)
+- Final eval loss: 3B (1.629), 1B (1.717)
 
-### 总体准确率对比
+##  Key Findings
 
-| 模型 | 正确数 | 总数 | 准确率 |
-|------|--------|------|--------|
-| **Llama3-MPR-SFT (微调模型)** | **84** | **100** | **84.00%** |
-| GPT-3 Embedding Baseline | 54 | 100 | 54.00% |
+1. **Data Bias Issue**: Discovered and fixed critical bias where all answers were at position A
+2. **No Data Leakage**: Train/validation/test sets are completely disjoint (verified with fixed seed=42)
+3. **Fine-tuning Effectiveness**: 3B model achieves 86% accuracy with only 400 training samples
+4. **Model Scale Matters**: 3B consistently outperforms 1B (86% vs 74%)
+5. **Generative > Retrieval**: Even zero-shot Llama (80%) outperforms GPT-3 Embedding (56%)
 
-### 关键指标
+##  Dependencies
 
-- ✅ **Llama3-MPR-SFT 准确率**: 84.00%
-- ✅ **GPT-3 Embedding 准确率**: 54.00%
-- 📈 **绝对提升**: +30.00 个百分点
-- 🚀 **相对提升**: +54.00%
-- ❌ **Llama3-MPR-SFT 错误数**: 16 个
-- ❌ **GPT-3 Embedding 错误数**: 45 个
+All required packages are listed in `requirements.txt`:
 
-### 预测字母分布（验证无偏差）
+```bash
+pip install -r requirements.txt
+```
 
-**Llama3-MPR-SFT 预测分布**：
-- A: 23 (23.0%)
-- B: 17 (17.0%)
-- C: 23 (23.0%)
-- D: 21 (21.0%)
-- E: 16 (16.0%)
+Main dependencies:
+- `transformers==4.57.1` - Hugging Face Transformers
+- `peft==0.17.1` - Parameter-Efficient Fine-Tuning (LoRA)
+- `datasets==4.4.1` - Hugging Face Datasets
+- `bitsandbytes==0.48.1` - 4-bit quantization
+- `torch==2.5.1` - PyTorch with CUDA support
+- `accelerate==1.11.0` - Distributed training utilities
+- `openai==0.28.1` - OpenAI API (optional, for generating embeddings)
 
-✅ 预测分布均匀，证明模型真正学会了任务，而不是简单记忆
+##  Data Split Methodology
 
----
+The dataset is split using a deterministic random shuffle:
 
-## 🎓 模型配置
-### emb_preds: gpt3的预测
-### mpr_preds:  llama3的预测
-### Llama3-MPR-SFT 配置
+1. **Fixed Seed**: `random.seed(42)` ensures reproducible splits
+2. **Shuffle**: All 500 indices are randomly shuffled
+3. **Sequential Split**: Shuffled indices are split sequentially (no overlap possible)
+   - Train: indices[0:400]
+   - Valid: indices[400:450]
+   - Test: indices[450:500]
 
-**基础模型**: Llama-3.2-3B-Instruct
-
-**微调方法**: LoRA (Low-Rank Adaptation)
-- LoRA rank (r): 4
-- LoRA alpha: 16
-- LoRA dropout: 0.05
-- Target modules: q_proj, k_proj, v_proj, o_proj
-- 可训练参数: 2,293,760 (0.07% of total)
-
-**训练配置**:
-- 量化: 4-bit NF4
-- 学习率: 2e-4
-- 训练轮数: 5 epochs
-- Batch size: 1 (gradient accumulation: 8)
-- 优化器: paged_adamw_32bit
-- 训练时间: ~12.5 分钟
-
-**训练数据**:
-- 训练集: 300 样本
-- 验证集: 100 样本
-- 测试集: 100 样本
-
-**训练损失曲线**:
-- Epoch 1: loss 1.7002 → eval_loss 1.7058
-- Epoch 2: loss 1.6445 → eval_loss 1.6374
-- Epoch 3: loss 1.5226 → eval_loss 1.6152
-- Epoch 4: loss 1.4510 → eval_loss 1.6095
-- Epoch 5: loss 1.4648 → eval_loss 1.6131
-
-✅ 训练收敛良好，无过拟合
-
-### GPT-3 Embedding Baseline
-
-**嵌入模型**: text-embedding-ada-002
-
-**方法**:
-1. 使用 GPT-3 获取查询和所有选项的嵌入向量
-2. 计算查询向量与每个选项向量的余弦相似度
-3. 选择相似度最高的选项作为预测结果
-
----
-
-## 💡 实验分析
-
-### Llama3-MPR-SFT 的优势
-
-1. **真正的语义理解**
-   - 84% 的准确率表明模型真正学会了理解食谱推荐任务
-   - 能够理解查询中的限制条件、否定逻辑和偏好
-
-2. **任务特化**
-   - 通过在 Recipe-MPR 数据集上微调，模型学会了食谱领域的特定模式
-   - 理解食材、烹饪方法、营养需求等领域知识
-
-3. **生成式推理**
-   - 作为生成式模型，可以进行复杂的推理和判断
-   - 不仅是简单的相似度匹配
-
-### GPT-3 Embedding 的局限
-
-1. **浅层匹配**
-   - 54.55% 的准确率表明简单的嵌入相似度不足以处理复杂查询
-   - 无法理解深层语义和逻辑关系
-
-2. **无任务适配**
-   - 通用嵌入未针对食谱推荐任务优化
-   - 缺乏领域特定知识
-
-3. **无法处理复杂条件**
-   - 难以理解否定、排除、限制等条件
-   - 倾向于简单的词汇匹配
-
----
-
-## 🎯 结论
-
-### 主要发现
-
-1. **数据质量至关重要**
-   - 发现并修复了严重的数据偏差问题
-   - 强调了数据验证的重要性
-
-2. **微调效果显著**
-   - Llama3-MPR-SFT 达到 84% 准确率，显著优于 Embedding 方法
-   - 3B 参数的小模型经过微调后表现出色
-
-3. **方法论的重要性**
-   - 生成式模型 + 微调 >> 简单的嵌入相似度
-   - 任务特化比模型规模更重要
-
-### 实际应用建议
-
-**推荐使用 Llama3-MPR-SFT**:
-- ✅ 准确率高（84%）
-- ✅ 模型小（3B 参数），部署成本低
-- ✅ 推理速度快（仅输出 2 tokens）
-- ✅ 可本地部署，无 API 调用成本
-- ✅ 真正理解用户意图
-
-**不推荐 GPT-3 Embedding**:
-- ❌ 准确率低（54.55%）
-- ❌ 无法处理复杂查询
-- ❌ 需要持续的 API 调用成本
-- ❌ 用户体验差
-
----
-
-## 📈 实验价值
-
-1. **方法论验证**
-   - 证明了针对特定任务微调的重要性
-   - 展示了小模型也能超越通用大模型的方法
-
-2. **数据质量意识**
-   - 发现并解决了数据偏差问题
-   - 强调了数据验证的重要性
-
-3. **实用性强**
-   - 84% 的准确率足以应用于实际场景
-   - 3B 模型易于部署
-
----
-
-## 📝 实验记录
-
-- **实验日期**: 2025年11月12日
-- **数据集**: Recipe-MPR (500 samples, 60/20/20 split)
-- **修复问题**: 数据偏差（所有答案在位置A）
-- **最终准确率**: Llama3-MPR-SFT 84.00% vs GPT-3 Embedding 54.55%
-- **代码仓库**: `/home/zhengyangli/1508project/llamaFineTune`
-
----
-
-## 🔗 相关文件
-
-- 训练脚本: `train_sft.py`
-- 评估脚本: `eval_mpr.py`, `eval_embedding_baseline.py`
-- 数据准备: `prep_mpr.py` (已修复)
-- 对比脚本: `simple_compare.py`
-- 预测结果: `mpr_preds.jsonl`, `emb_preds.jsonl`
-- 数据验证: `check_data_overlap.py`
-
----
-
-*本报告由实验自动生成，所有数据来源于真实的模型评估结果。*
-
-
+**Verification**: Train/valid/test sets are mathematically guaranteed to be disjoint.
 

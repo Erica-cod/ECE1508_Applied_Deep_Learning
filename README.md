@@ -1,5 +1,5 @@
 # ECE1508_Applied_Deep_Learning
-### Members: Kevin, John, Paul. 
+### Members: Kevin, John(Zhengyang), Paul. 
 
 ## This project is based on the given topic:
 
